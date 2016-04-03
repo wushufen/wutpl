@@ -333,7 +333,7 @@ var startTest = function () {
 
 
         if (!testList.length) {
-            log('测试已完成，请不要迷恋速度');
+            log('测试已完成，请不要迷恋速度，多试几次，结果不一定相同。 <a href="javascript:location.reload()">刷新再来</a>');
             return;
         }
 
@@ -503,7 +503,7 @@ var startTest = function () {
 
 <body>
 <h1>引擎渲染速度测试</h1>
-<p><strong><script>document.write(length)</script></strong> 条数据 × <strong><script>document.write(number)</script></strong> 次渲染测试 [借用artTemplate的测试页面，多试几次，结果不一定相同]</p>
+<p><strong><script>document.write(length)</script></strong> 条数据 × <strong><script>document.write(number)</script></strong> 次渲染测试 [借用artTemplate的测试页面]</p>
 <p><em>建议在拥有 v8 javascript 引擎的 chrome 浏览器上进行测试，避免浏览器停止响应</em></p>
 <p><button id="button-test" onclick="this.disabled=true;startTest()" style="padding: 5px;">开始测试»</button> <span id="log" style="font-size:12px"><script>for (var i = 0; i < testList.length; i ++) {document.write(testList[i].name + '; ')}</script></span></p>
 <div id="container" style="min-width: 400px; margin: 0 auto"></div>
