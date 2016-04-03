@@ -1,6 +1,6 @@
 # wu.tmpl.js
 极简高性能模板引擎
-
+(test/test.png)
 
 
 ## Usage 使用方法
