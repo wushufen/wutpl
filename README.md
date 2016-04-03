@@ -1,6 +1,10 @@
 # wu.tmpl.js
 极简高性能模板引擎
-(test/test.png)
+
+============
+
+![性能测试](test/test.png)
+[性能测试](https://wusfen.github.io/wu.tmpl.js/test/template_test.html)
 
 
 ## Usage 使用方法
