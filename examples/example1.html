@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="../wu.tmpl.js"></script>
+</head>
+<body>
+
+	<h1>example1</h1>
+
+	<ul wu-tmpl="data">
+		{{each list item i}}
+		<li> {{item.name}} </li>
+		{{/each}}
+	</ul>
+
+	<script>
+		var data = {
+			list:[
+				{id:1, name:'tom'},
+				{id:2, name:'lily'},
+				{id:3, name:'mary'}
+			]
+		}
+	</script>
+
+</body>
+</html>
