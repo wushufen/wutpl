@@ -250,7 +250,9 @@ var wu = wu || {};
             }();
         }
 
-        style.parentNode.removeChild(style);
+        setTimeout(function() {
+            style.parentNode.removeChild(style);
+        }, 41);
     });
 
     /**
