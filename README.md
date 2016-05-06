@@ -50,3 +50,43 @@
 </body>
 </html>
 ```
+
+## 模板语法
+
+### 简洁语法
+* if, else, else if
+```javascript
+{{if 条件1}}
+ ...
+{{else if 条件2}}
+ ...
+{{else}}
+ ...
+{{/if}}
+```
+* each
+```javascript
+{{each array item index}}
+ ...
+{{/each}}
+```
+* 输出表达式
+```javascript
+{{ 表达式 }}
+```
+
+### 原生语法
+* <%  %> 可以写任何原生 js，如：  
+```
+<ul>
+ <% for(var i = 0; i < 100; i++){ %>
+ <li>...<li>
+ <% } %>
+</ul>
+```
+
+* <%= 表达式 %> 插入表达式，如：
+```
+<p> hello <%= 'world' %> ! </p>
+```
+
