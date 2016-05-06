@@ -3,8 +3,8 @@
 
 ============
 
-![性能测试](test/test.png)
-[性能测试](https://wusfen.github.io/wu.tmpl.js/test/template_test.html)
+![性能测试](test/test.png)  
+<!--[性能测试](https://wusfen.github.io/wu.tmpl.js/test/template_test.html)-->
 
 
 ## 特性
@@ -17,7 +17,8 @@
 
 
 ## 10秒上手
-初始自动渲染
+
+在标签上加上 `wu-tmpl` 属性即可声明为模板，并会在页面准备完时 **自动渲染**，`"data"` 就是要传入的参数
 
 
 ```html
