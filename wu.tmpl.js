@@ -12,8 +12,10 @@ var wu = wu || {};
     /**
      * render function cache
      * {
-     *     'tpl1 stirng':{
-     *         code: 'code'
+     *     'tpl stirng':{
+     *         vars: 'var v1 = _data_["v1"] ...',
+     *         code: 'var _html_ = "" ... return _html_',
+     *         render: function(){...}
      *     }
      * }
      */
@@ -26,7 +28,9 @@ var wu = wu || {};
      * `{{if name}}
      *     <span>{{ name }}</span>
      * {{/if}}`
+     * 
      * =>
+     * 
      * `
      * var _html_ = ""
      * if(name){
@@ -76,10 +80,15 @@ var wu = wu || {};
 
     /**
      * @example
+     * 
      * {a:1, b:2}
+     * 
      * =>
+     *
+     * `
      * var a = _data_['a']
      * var b = _data_['b']
+     * `
      * 
      * @param  {Object} data
      * @return {String}
@@ -132,7 +141,7 @@ var wu = wu || {};
     function tmpl(tpl, data) {
         var render = getRender(tpl, data);
         // console.log(render)
-        return data ? render(data) : render;
+        return arguments.length > 1 ? render(data) : render;
     };
 
     /**
@@ -197,17 +206,17 @@ var wu = wu || {};
     head.appendChild(style);
 
     // wu-tmple elements
-    var tmplElList = [];
+    var tmplElements = [];
 
     /**
      * auto render wu-tmpl on dom ready
      */
     ready(function() {
 
-        tmplElList = getElementsByAttrName('wu-tmpl');
-        for (var i = 0; i < tmplElList.length; i++) {
+        tmplElements = getElementsByAttrName('wu-tmpl');
+        for (var i = 0; i < tmplElements.length; i++) {
             + function() {
-                var el = tmplElList[i];
+                var el = tmplElements[i];
                 el.name = el.getAttribute('wu-tmpl');
                 try {
                     el.data = el.name ? eval('(' + el.name + ')') : undefined; // 参数
@@ -220,16 +229,28 @@ var wu = wu || {};
                     if (el.tagName == 'SCRIPT') {
                         return
                     }
-                    this.innerHTML = wu.tmpl(this.tpl, this.data);
+
+                    cache[el.tpl] = cache[el.tpl] || {};
+                    cache[el.tpl].time = cache[el.tpl].time || new Date(0);
+                    clearTimeout(el.timer);
+                    if (new Date - cache[el.tpl].time > 41) {
+                        cache[el.tpl].time = new Date;
+                        el.innerHTML = wu.tmpl(el.tpl, el.data);
+                    } else {
+                        el.timer = setTimeout(function() {
+                            cache[el.tpl].time = new Date;
+                            el.innerHTML = wu.tmpl(el.tpl, el.data);
+                        }, 41);
+                    }
                 };
                 setTimeout(function() {
                     el.render();
-                    el.removeAttribute('wu-tmpl');
+                    // el.removeAttribute('wu-tmpl');
                 }, 40 * i + 1);
             }();
         }
 
-        // style.parentNode.removeChild(style);
+        style.parentNode.removeChild(style);
     });
 
     /**
@@ -271,8 +292,8 @@ var wu = wu || {};
      * @param  {Element} name   element
      */
     wu.tmpl.render = function(name) {
-        for (var i = 0; i < tmplElList.length; i++) {
-            var el = tmplElList[i];
+        for (var i = 0; i < tmplElements.length; i++) {
+            var el = tmplElements[i];
             if (!name || el.name == name || el.data == name || el == name) {
                 el.render();
             }
