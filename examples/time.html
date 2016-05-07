@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="../wu.tmpl.js"></script>
+</head>
+<body>
+
+
+	<div wu-tmpl style="font-size: 3em">
+	
+		<% var d = new Date %>
+
+		{{ d.getHours() }}:{{ d.getMinutes() }}:{{ d.getSeconds() }}
+
+		<small style="color: #aaa; font-size: 0.6em">
+			{{ d.getMilliseconds() }}
+		</small>
+
+		<% console.log(d) %>
+
+	</div>
+
+
+	<script>
+		setInterval(function () {
+			wu.tmpl.render();
+		}, 16.666667)
+	</script>
+
+
+</body>
+</html>
