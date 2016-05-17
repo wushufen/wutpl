@@ -118,10 +118,13 @@
 @param  {Object} data   data of tmpl.  可选
 ```
 ```javascript
-wu.tmpl.render('data')
+wu.tmpl.render('list')
 
 // or
 wu.tmpl.render(data)
+
+// or
+wu.tmpl.render('list', newData)
 
 // or
 var tpl = documents.getElementById('tplId')
