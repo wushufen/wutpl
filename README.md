@@ -177,6 +177,7 @@ wu.tmpl.render(tpl)
 
 * [hello world](https://cdn.rawgit.com/wusfen/wu.tmpl.js/master/examples/helloWorld.html) | [源码](examples/helloWorld.html)
 * [时钟](https://cdn.rawgit.com/wusfen/wu.tmpl.js/master/examples/time.html) | [源码](examples/time.html)
-* [ajax](https://cdn.rawgit.com/wusfen/wu.tmpl.js/master/examples/ajax.html) | [源码](examples/ajax.html)
 * [动画](https://cdn.rawgit.com/wusfen/wu.tmpl.js/master/examples/animate.html) | [源码](examples/animate.html)
+* [ajax](https://cdn.rawgit.com/wusfen/wu.tmpl.js/master/examples/ajax.html) | [源码](examples/ajax.html)
 * [list](https://cdn.rawgit.com/wusfen/wu.tmpl.js/master/examples/list.html) | [源码](examples/list.html)
+* [原生语法](https://cdn.rawgit.com/wusfen/wu.tmpl.js/master/examples/raw.html) | [源码](examples/raw.html)

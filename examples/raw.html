@@ -2,46 +2,32 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no">
-    <title></title>
     <script type="text/javascript" src="../wu.tmpl.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <ul wu-tmpl="{render:true}">
-            <div>
-                <%="1"+'2'+`3`%>
-            </div>
-            
-            <% if(true){%>
-                <span>22</span>
-                <div>abc\\"'""''</div>
-            <% } %>
 
-            <% for(var i=0; i< list.length; i++){ %>
-                <li> <%= list[i].name %> </li>
-            <% } %>
-        </ul>
-    </div>
+    <ul wu-tmpl="{render:true}">
+        <div>
+            <%= "1" + '2' + `3` %>
+        </div>
+        
+        <% if(true){%>
+            <span>22</span>
+            <div>abc\\"'""''</div>
+        <% } %>
+
+        <% for(var i=0; i< list.length; i++){ %>
+            <li> <%= list[i].name %> </li>
+        <% } %>
+    </ul>
+
     <script>
     var list = [
         {id: 1, name: 'name1'},
         {id: 2, name: 'name2'},
         {id: 3, name: 'name3'}
     ]
-    for (var i = 0; i < 1000; i++) {
-        var obj = {};
-        obj.id = i;
-        obj.name = 'name' + i;
-        list.push(obj)
-    }
     </script>
 </body>
 
