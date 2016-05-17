@@ -5,20 +5,20 @@
 </head>
 <body>
 
-	<h1>example1</h1>
-
-	<ul wu-tmpl="data">
+	<ul wu-tmpl="{name:'list', data:data, render:true}">
 		{{each list item i}}
-		<li> {{item.name}} </li>
+		<li>
+			{{ item.name }}
+		</li>		
 		{{/each}}
 	</ul>
 
 	<script>
 		var data = {
 			list:[
-				{id:1, name:'tom'},
-				{id:2, name:'lily'},
-				{id:3, name:'mary'}
+				{id:1, name:'Tom'},
+				{id:2, name:'Lily'},
+				{id:3, name:'Mary'}
 			]
 		}
 	</script>

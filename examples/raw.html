@@ -15,14 +15,16 @@
 
 <body>
     <div class="container">
-        <ul wu-tmpl="data">
+        <ul wu-tmpl="{render:true}">
             <div>
                 <%="1"+'2'+`3`%>
             </div>
+            
             <% if(true){%>
                 <span>22</span>
                 <div>abc\\"'""''</div>
             <% } %>
+
             <% for(var i=0; i< list.length; i++){ %>
                 <li> <%= list[i].name %> </li>
             <% } %>

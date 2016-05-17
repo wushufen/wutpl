@@ -71,7 +71,7 @@ var wu = wu || {};
             .replace(/{{else}}/g, '}else{')
             .replace(/{{\/if}}/g, '}')
             // 表达式
-            .replace(/{{=?(.*?)}}/g, '_html_+=$1');
+            .replace(/{{=?([\s\S]*?)}}/g, '_html_+=$1');
 
         code = 'var _html_="";' + code + 'return _html_';
         return code;
@@ -106,6 +106,7 @@ var wu = wu || {};
 
     /**
      * get tpl render function
+     * 
      * @param  {String} tpl  template string
      * @param  {Object} data template arguments
      * @return {Function}      render function
@@ -140,8 +141,10 @@ var wu = wu || {};
      */
     function tmpl(tpl, data) {
         var render = getRender(tpl, data);
-        // console.log(render)
-        return arguments.length > 1 ? render(data) : render;
+        return arguments.length > 1 ? render(data) : function (data) {
+            var render = getRender(tpl, data);
+            return render(data);
+        };
     };
 
     /**
@@ -217,36 +220,29 @@ var wu = wu || {};
         for (var i = 0; i < tmplElements.length; i++) {
             + function() {
                 var el = tmplElements[i];
-                el.name = el.getAttribute('wu-tmpl');
+                var optionsStr = el.getAttribute('wu-tmpl');
+                var options;
                 try {
-                    el.data = el.name ? eval('(' + el.name + ')') : undefined; // 参数
-                } catch (e) {}
+                    options = optionsStr ? eval('(' + optionsStr + ')') : {};
+                } catch (e) {
+                    window.console && console.warn(e.stack);
+                    options = {};
+                }
                 el.tpl = el.innerHTML; // 保存模板
-                // console.log(el.name, el.data, el.tpl);
+                el.innerHTML = '';
 
-                el.render = function() {
-                    // 非 script 标签
-                    if (el.tagName == 'SCRIPT') {
-                        return
-                    }
-
-                    cache[el.tpl] = cache[el.tpl] || {};
-                    cache[el.tpl].time = cache[el.tpl].time || new Date(0);
-                    clearTimeout(el.timer);
-                    if (new Date - cache[el.tpl].time > 41) {
-                        cache[el.tpl].time = new Date;
-                        el.innerHTML = wu.tmpl(el.tpl, el.data);
-                    } else {
-                        el.timer = setTimeout(function() {
-                            cache[el.tpl].time = new Date;
-                            el.innerHTML = wu.tmpl(el.tpl, el.data);
-                        }, 41);
+                el.name = options.name;
+                el.data = options.data;
+                el.render = function(data) {
+                    this.innerHTML = wu.tmpl(this.tpl, data || this.data);
+                    if (data) {
+                        this.data = data;
                     }
                 };
-                setTimeout(function() {
+
+                if (options.render) {
                     el.render();
-                    // el.removeAttribute('wu-tmpl');
-                }, 40 * i + 1);
+                }
             }();
         }
 
@@ -268,7 +264,7 @@ var wu = wu || {};
      * }
      * </script>
      * 
-     * <ul id="list" wu-tmpl="data">
+     * <ul id="list" wu-tmpl="{name:'list', data:data, render:true}">
      * {{each list item i}}
      *     <li>
      *         {{i+1}}: {{item.name}}
@@ -279,7 +275,7 @@ var wu = wu || {};
      *
      * 再渲染
      * ```javascript
-     * wu.tmpl.render('data')
+     * wu.tmpl.render('list')
      * 
      * // or
      * wu.tmpl.render(data)
@@ -289,15 +285,18 @@ var wu = wu || {};
      * wu.tmpl.render(listEl)
      * ```
      * 
-     * @param  {String} name    'data' 
-     * @param  {Object} name    data
+     * @param  {} name          如果不传，则更新所有模板
+     * @param  {String} name    'tmpl name' 
+     * @param  {Object} name    dataObject
      * @param  {Element} name   element
+     * 
+     * @param  {Object} data   data of tmpl.  可选
      */
-    wu.tmpl.render = function(name) {
+    wu.tmpl.render = function(name, data) {
         for (var i = 0; i < tmplElements.length; i++) {
             var el = tmplElements[i];
             if (!name || el.name == name || el.data == name || el == name) {
-                el.render();
+                el.render(data);
             }
         }
     };

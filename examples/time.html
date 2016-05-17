@@ -2,31 +2,27 @@
 <html>
 <head>
 	<script src="../wu.tmpl.js"></script>
+	<style>
+	div{font-size: 8em;}
+	small{color: #aaa; font-size: 0.6em}
+	</style>
 </head>
 <body>
 
 
-	<div wu-tmpl style="font-size: 3em">
-	
+	<div wu-tmpl="{name:'time'}">
 		<% var d = new Date %>
 
 		{{ d.getHours() }}:{{ d.getMinutes() }}:{{ d.getSeconds() }}
 
-		<small style="color: #aaa; font-size: 0.6em">
-			{{ d.getMilliseconds() }}
-		</small>
-
-		<% console.log(d) %>
-
+		<small> {{ ('00'+d.getMilliseconds()).slice(-3) }} </small>
 	</div>
-
 
 	<script>
 		setInterval(function () {
-			wu.tmpl.render();
-		}, 16.666667)
+			wu.tmpl.render('time');
+		}, 41.666667)
 	</script>
-
 
 </body>
 </html>
