@@ -133,6 +133,24 @@ wu.tmpl.render(tpl)
 
 
 ------------------------------------------
+## 手动编译模板
+
+`wu.tmpl(tplString, data)`
+
+```javascript
+var render = wu.tmpl('hello {{ world }} !')
+// => render function
+render()
+// => hello world !
+```
+
+```javascript
+wu.tmpl('hello {{ name||"world" }} !', {name:'tom'})
+// => hello tom !
+```
+
+
+------------------------------------------
 ## 模板语法
 
 ### 简洁语法
