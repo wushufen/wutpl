@@ -158,7 +158,13 @@ wu.tmpl.render(tpl)
 ------------------------------------------
 ## 手动编译模板
 
-`wu.tmpl(tplString, data)`
+`wu.tmpl(tpl, data)`
+
+```javascript
+@param  {String} tpl  template string
+@param  {Object | --} data template arguments
+@return {String | Function}      data? 'renderResult' : renderFunction
+```
 
 ```javascript
 var render = wu.tmpl('hello {{ world }} !')
