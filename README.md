@@ -144,7 +144,7 @@ wu.tmpl.render(tpl)
 ```
 
 ```javascript
-var render = wu.tmpl('hello {{ world }} !')
+var render = wu.tmpl('hello {{ "world" }} !')
 // => render function
 render()
 // => hello world !
