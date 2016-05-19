@@ -141,7 +141,7 @@ var wu = wu || {};
      */
     function tmpl(tpl, data) {
         var render = getRender(tpl, data);
-        return arguments.length > 1 ? render(data) : function (data) {
+        return arguments.length > 1 ? render(data) : function(data) {
             var render = getRender(tpl, data);
             return render(data);
         };
@@ -151,7 +151,14 @@ var wu = wu || {};
      * api
      */
     wu.tmpl = tmpl;
-
+    // require.js || sea.js
+    if (typeof define == 'function') {
+        return tmpl;
+    }
+    // node.js
+    if (typeof module != 'undefined') {
+        module.exports = tmpl;
+    }
 
 
     /**
