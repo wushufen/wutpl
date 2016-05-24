@@ -23,14 +23,14 @@ var wu = wu || {};
 
     /**
      * render function body
-     * 
-     * @example 
+     *
+     * @example
      * `{{if name}}
      *     <span>{{ name }}</span>
      * {{/if}}`
-     * 
+     *
      * =>
-     * 
+     *
      * `
      * var _html_ = ""
      * if(name){
@@ -40,6 +40,9 @@ var wu = wu || {};
      * }
      * return _html_
      * `
+     *
+     * @param {String} tpl - tpl string
+     * @return {String}
      */
     function tplToCode(tpl) {
         var eachI = 0; // each 嵌套 for 下标须不同
@@ -80,16 +83,16 @@ var wu = wu || {};
 
     /**
      * @example
-     * 
+     *
      * {a:1, b:2}
-     * 
+     *
      * =>
      *
      * `
      * var a = _data_['a']
      * var b = _data_['b']
      * `
-     * 
+     *
      * @param  {Object} data
      * @return {String}
      */
@@ -106,9 +109,9 @@ var wu = wu || {};
 
     /**
      * get tpl render function
-     * 
-     * @param  {String} tpl  template string
-     * @param  {Object} data template arguments
+     *
+     * @param  {String} tpl - template string
+     * @param  {Object} data - template arguments
      * @return {Function}      render function
      */
     function getRender(tpl, data) {
@@ -133,10 +136,10 @@ var wu = wu || {};
 
     /**
      * tmpl
-     * 
-     * @param  {String} tpl  template string
-     * @param  {Object} data template arguments
-     * @return {String | Function}      data? 'render result' : renderFunction
+     *
+     * @param  {String} tpl - template string
+     * @param  {Object} data - template arguments
+     * @return {String|Function} -      data? 'render result' : renderFunction
      *                   renderFunction(data);
      */
     function tmpl(tpl, data) {
@@ -170,8 +173,8 @@ var wu = wu || {};
 
     /**
      * simple dom ready
-     * 
-     * @param  {Function} fn
+     *
+     * @param  {Function} fn - dom ready callback
      */
     function ready(fn) {
 
@@ -189,9 +192,9 @@ var wu = wu || {};
 
     /**
      * get elements by attr name
-     * 
-     * @param  {String} attrName    attr name
-     * @return {Array}              elements
+     *
+     * @param  {String} attrName - attr name
+     * @return {Array}
      */
     function getElementsByAttrName(attrName) {
         if (document.querySelectorAll) {
@@ -261,16 +264,16 @@ var wu = wu || {};
     /**
      * rerender api
      *
-     * @example 
+     * @example
      * ```html
      * <script>
      * var data = {
      *     list: [
      *         '...'
-     *     ] 
+     *     ]
      * }
      * </script>
-     * 
+     *
      * <ul id="list" wu-tmpl="{name:'list', data:data, render:true}">
      * {{each list item i}}
      *     <li>
@@ -283,21 +286,17 @@ var wu = wu || {};
      * 再渲染
      * ```javascript
      * wu.tmpl.render('list')
-     * 
+     *
      * // or
      * wu.tmpl.render(data)
-     * 
+     *
      * // or
      * var listEl = documents.getElementById('list')
      * wu.tmpl.render(listEl)
      * ```
-     * 
-     * @param  {} name          如果不传，则更新所有模板
-     * @param  {String} name    'tmpl name' 
-     * @param  {Object} name    dataObject
-     * @param  {Element} name   element
-     * 
-     * @param  {Object} data   data of tmpl.  可选
+     *
+     * @param  {Undefined|String|Object|Element} name - Undefined:更新所有模板；String:模板名；Object:模板的参数对象；Element:模板元素
+     * @param  {Undefined|Object} data - 模板的参数
      */
     wu.tmpl.render = function(name, data) {
         for (var i = 0; i < tmplElements.length; i++) {
