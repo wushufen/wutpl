@@ -128,7 +128,7 @@ wu.tmpl.render(data)
 wu.tmpl.render('list', newData)
 
 // or
-var tpl = documents.getElementById('tplId')
+var tpl = document.getElementById('tplId')
 wu.tmpl.render(tpl)
 ```
 
