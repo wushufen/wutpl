@@ -111,7 +111,11 @@
 
 3 . 再渲染 `wu.tmpl.render(name, data)`
 ```javascript
-@param  {Undefined|String|Object|Element} name - Undefined:更新所有模板；String:模板名；Object:模板的参数对象；Element:模板元素
+@param  {Undefined|String|Object|Element} name -
+    Undefined:不传则更新所有模板；
+    String:则为模板名；
+    Object:模板的参数对象；
+    Element:模板元素
 @param  {Undefined|Object} data - 模板的参数
 ```
 ```javascript
