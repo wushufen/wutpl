@@ -156,7 +156,9 @@ var wu = wu || {};
     wu.tmpl = tmpl;
     // require.js || sea.js
     if (typeof define == 'function') {
-        return tmpl;
+        define(function(require, exports, module){
+            return module.exports = tmpl
+        });
     }
     // node.js
     if (typeof module != 'undefined') {
