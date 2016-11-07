@@ -110,7 +110,7 @@
 </html>
 ```
 
-3 . 再渲染 `wu.tmpl.render(name, data)`
+3 . 更新视图 `wu.tmpl.render(name, data)`
 ```javascript
 @param  {Undefined|String|Object|Element} name -
     Undefined:不传则更新所有模板；
