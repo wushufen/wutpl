@@ -28,7 +28,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- 引入 wu.tmpl.js ， 建议放头部，避免闪烁。文件比较小 -->
+	<!-- 引入 wu.tmpl.js 。如果使用自动渲染功能，建议放头部 -->
 	<script src="../wu.tmpl.min.js"></script>
 </head>
 <body>
