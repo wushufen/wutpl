@@ -5,7 +5,7 @@
 
 
 ![性能测试](test/test.png)  
-<!-- [性能测试](https://wusfen.github.io/wu.tmpl.js/test/template_test.html) -->
+[性能测试](https://wusfen.github.io/wu.tmpl.js/test/template_test.html)
 
 
 ------------------------------------------
