@@ -17,7 +17,7 @@ var render = Tpl(String(function(){/*
 <ul>
   <% for(var i=0;i<n;i++){ %>
   <li>
-    <span> <%= i+1 %> </span>
+    <span> <%= i %> </span>
     <% if( i%2==0 ){ %>
     <span> even </span>
     <% } %>
