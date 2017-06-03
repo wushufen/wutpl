@@ -1,3 +1,5 @@
+//https://github.com/wusfen/wu.tmpl.js/blob/master/9%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E.js
+
 Tpl = function(tpl, data) {
     var fn = tpl.replace(/&lt;/g, '<').replace(/&gt;/g, '>') //    转义 <>
         .replace(/(<%=)([\s\S]*?)(%>)/g, '$1_html_+= ($2)\n$3') // <%= %>  [\s\S]允许换行
@@ -25,4 +27,5 @@ var render = Tpl(String(function(){/*
 */}).match(/^.*?\*([\s\S]*)\*/)[1]);
 render({n:10})
 
-// 复制此文件内容到控制台运行即看到结果
+
+// 复以上内容到控制台运行即看到结果
