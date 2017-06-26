@@ -1,7 +1,7 @@
 
 # wu.tmpl.js
 极简高性能模板引擎  
-也许这个更适合你-->基于dom的模板引擎[domTpl](https://github.com/wusfen/domTpl)
+<!-- 也许这个更适合你-->基于dom的模板引擎[domTpl](https://github.com/wusfen/domTpl) -->
 
 
 ![性能测试](test/test.png)  
