@@ -4,7 +4,7 @@
 
 
 ![性能测试](test/test.png)  
-[性能测试](https://wusfen.github.io/wu.tmpl.js/test/template_test.html)
+<!-- [性能测试](https://wusfen.github.io/wu.tmpl.js/test/template_test.html) -->
 
 
 ------------------------------------------
@@ -201,7 +201,7 @@ wu.tmpl('hello {{ name||"world" }} !', {name:'tom'})
 ------------------------------------------
 ## 例子
 
-查看源代码，看怎么使用
+查看源代码，看怎么使用 (*地址已被墙，可fork下来看)
 
 * [hello world](https://cdn.rawgit.com/wusfen/wu.tmpl.js/master/examples/helloWorld.html) | [源码](examples/helloWorld.html)
 * [时钟](https://cdn.rawgit.com/wusfen/wu.tmpl.js/master/examples/time.html) | [源码](examples/time.html)
