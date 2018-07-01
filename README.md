@@ -1,7 +1,6 @@
 
 # wu.tmpl.js
 极简高性能模板引擎  
-纯前端推荐使用另外一个，基于dom的模板引擎[domTpl](https://github.com/wusfen/domTpl)
 
 
 ![性能测试](test/test.png)  
@@ -28,7 +27,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- 引入 wu.tmpl.js ， 建议放头部，避免闪烁。文件比较小 -->
+	<!-- 引入 wu.tmpl.js 。如果使用自动渲染功能，建议放头部 -->
 	<script src="../wu.tmpl.min.js"></script>
 </head>
 <body>
@@ -110,7 +109,7 @@
 </html>
 ```
 
-3 . 再渲染 `wu.tmpl.render(name, data)`
+3 . 更新视图 `wu.tmpl.render(name, data)`
 ```javascript
 @param  {Undefined|String|Object|Element} name -
     Undefined:不传则更新所有模板；
@@ -202,7 +201,7 @@ wu.tmpl('hello {{ name||"world" }} !', {name:'tom'})
 ------------------------------------------
 ## 例子
 
-查看源代码，看怎么使用
+查看源代码，看怎么使用 (*地址已被墙，可fork下来看)
 
 * [hello world](https://cdn.rawgit.com/wusfen/wu.tmpl.js/master/examples/helloWorld.html) | [源码](examples/helloWorld.html)
 * [时钟](https://cdn.rawgit.com/wusfen/wu.tmpl.js/master/examples/time.html) | [源码](examples/time.html)
