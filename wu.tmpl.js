@@ -60,7 +60,7 @@ var wu = wu || {};
             // <% %>
             .replace(/(<%)(?!=)([\s\S]*?)(%>)/g, '\n\t$2\n') // <% js code %>  (?!=)不要匹配到<%= %>
             // each
-            .replace(/{{each\s+([\$\w]*)\s*([\$\w]*)?\s*([\$\w]*)?}}/g, function($, $1, $2, $3) {
+            .replace(/{{each\s+((?:\S|\[.*?\]|\{.*?\})*)\s*(\S*)?\s*(\S*)?}}/g, function($, $1, $2, $3) {
                 var $ii = '_ii_' + (eachI++);
                 var each = 'for(var $ii=0; $ii<$1.length; $ii++){';
                 each += $2 ? '\nvar $2 = $1[$ii];' : '\nvar $item = $1[$ii];';
@@ -308,4 +308,5 @@ var wu = wu || {};
             }
         }
     };
-})(this);
+
+})(window);
