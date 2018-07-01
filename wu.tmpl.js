@@ -1,5 +1,5 @@
 /*!
- * https://github.com/wusfen/wu.tmpl.js
+ * @preserve https://github.com/wusfen/wu.tmpl.js
  */
 
 

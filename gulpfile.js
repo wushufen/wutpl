@@ -13,7 +13,10 @@ gulp.task('js', function() {
 
     gulp.src('wu.tmpl.js')
         .pipe(uglify({
-            preserveComments: 'license'
+            // preserveComments: 'license'
+            output: {
+                comments: 'some'
+            }
         }))
         .pipe(rename({ extname: '.min.js' }))
         .pipe(gulp.dest('.'));
