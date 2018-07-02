@@ -197,6 +197,16 @@ wu.tmpl('hello {{ name||"world" }} !', {name:'tom'})
 <p> hello <%= 'world' %> ! </p>
 ```
 
+## data-src
+如果模板直接写在目标位置，浏览器会先请求{{src}}，导致404
+```html
+<img src="{{src}}">
+```
+避免方式
+```html
+<img data-src="{{src}}">
+```
+
 
 ------------------------------------------
 ## 例子

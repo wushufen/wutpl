@@ -74,7 +74,9 @@ var wu = wu || {};
             .replace(/{{else}}/g, '}else{')
             .replace(/{{\/if}}/g, '}')
             // 表达式
-            .replace(/{{=?([\s\S]*?)}}/g, '_html_+=$1');
+            .replace(/{{=?([\s\S]*?)}}/g, '_html_+=$1')
+            // data-src
+            .replace(/ data-src=/g, ' src=')
 
         code = 'var _html_="";' + code + 'return _html_';
         return code;
@@ -237,7 +239,7 @@ var wu = wu || {};
                 try {
                     options = optionsStr ? eval('(' + optionsStr + ')') : {};
                 } catch (e) {
-                    window.console && console.warn(e.stack);
+                    window.console && console.error(e.stack);
                     options = {};
                 }
                 el.tpl = el.innerHTML; // 保存模板
@@ -303,10 +305,16 @@ var wu = wu || {};
     wu.tmpl.render = function(name, data) {
         for (var i = 0; i < tmplElements.length; i++) {
             var el = tmplElements[i];
+            console.log(el)
             if (!name || el.name == name || el.data == name || el == name) {
                 el.render(data);
             }
         }
     };
+
+    // export
+    if (typeof module != 'undefined') {
+        module.exports = tmpl
+    }
 
 })(window);
