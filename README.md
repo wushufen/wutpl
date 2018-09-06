@@ -22,7 +22,7 @@
 ------------------------------------------
 ## 如何使用
 
-1 . 引入 `<script src="path/to/wu.tmpl.js"></script>`。 下载压缩版 [wu.tmpl.min.js](https://cdn.rawgit.com/wusfen/wu.tmpl.js/master/wu.tmpl.min.js)
+1 . 引入 `<script src="path/to/wu.tmpl.js"></script>`。 下载压缩版 [wu.tmpl.min.js](https://wusfen.github.io/wu.tmpl.js/wu.tmpl.min.js)
 ```html
 <!DOCTYPE html>
 <html>
@@ -211,11 +211,11 @@ wu.tmpl('hello {{ name||"world" }} !', {name:'tom'})
 ------------------------------------------
 ## 例子
 
-查看源代码，看怎么使用 (*地址已被墙，可fork下来看)
+查看源代码，看怎么使用
 
-* [hello world](https://cdn.rawgit.com/wusfen/wu.tmpl.js/master/examples/helloWorld.html) | [源码](examples/helloWorld.html)
-* [时钟](https://cdn.rawgit.com/wusfen/wu.tmpl.js/master/examples/time.html) | [源码](examples/time.html)
-* [动画](https://cdn.rawgit.com/wusfen/wu.tmpl.js/master/examples/animate.html) | [源码](examples/animate.html)
-* [ajax](https://cdn.rawgit.com/wusfen/wu.tmpl.js/master/examples/ajax.html) | [源码](examples/ajax.html)
-* [list](https://cdn.rawgit.com/wusfen/wu.tmpl.js/master/examples/list.html) | [源码](examples/list.html)
-* [原生语法](https://cdn.rawgit.com/wusfen/wu.tmpl.js/master/examples/raw.html) | [源码](examples/raw.html)
+* [hello world](https://wusfen.github.io/wu.tmpl.js/examples/helloWorld.html) | [源码](examples/helloWorld.html)
+* [时钟](https://wusfen.github.io/wu.tmpl.js/examples/time.html) | [源码](examples/time.html)
+* [动画](https://wusfen.github.io/wu.tmpl.js/examples/animate.html) | [源码](examples/animate.html)
+* [ajax](https://wusfen.github.io/wu.tmpl.js/examples/ajax.html) | [源码](examples/ajax.html)
+* [list](https://wusfen.github.io/wu.tmpl.js/examples/list.html) | [源码](examples/list.html)
+* [原生语法](https://wusfen.github.io/wu.tmpl.js/examples/raw.html) | [源码](examples/raw.html)
