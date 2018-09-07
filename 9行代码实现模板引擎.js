@@ -1,59 +1,62 @@
-//https://github.com/wusfen/wu.tmpl.js/blob/master/9%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E.js
+/*! @preserve https://github.com/wusfen */
+function wutpl(tpl){
+    var code = tpl
+        .replace(/<%=(.*?)%>/g, '\f_html_+= $1\f') // <%= %>
+        .replace(/<%(.*?)%>/g, '\f$1\f') // <% %>
+        .replace(/(^|\f)([\s\S]*?)(\f|$)/g, function($, $1, $2, $3){ // \f html \f
+            return '\n_html_+= "' + $2
+                .replace(/\\/g, '\\\\') // \  ->  '\\'
+                .replace(/\r?\n/g, '\\n') // \n  ->  '\\n'
+                .replace(/"/g, '\\"') // "  ->  '\\"'
+                + '"\n'
+        })
+    return Function('_data_', 'var _html_="";with(_data_){'+code+'}return _html_')
+}
 
-Tpl = function(tpl, data) {
-    var fn = tpl.replace(/&lt;/g, '<').replace(/&gt;/g, '>') //    转义 <>
-        .replace(/(<%=)([\s\S]*?)(%>)/g, '$1_html_+= ($2)\n$3') // <%= %>  [\s\S]允许换行
-        .replace(/(<%)(?!=)([\s\S]*?)(%>)/g, '$1\n\t$2\n$3') // <% js code %>  (?!=)不要匹配到<%= %>
-        .replace(/(^|%>|%>)([\s\S]*?)(<%=|<%|$)/g, function($, $1, $2, $3) { // 边界符外的html, html中的(\|"|\r|\n)要转义
-            return '_html_+= "' + $2.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\r?\n/g, '\\n') + '"\n'
-        });
-    return (fn = Function('data', 'with(data||{}){\nvar _html_=""\n' + fn + '\nreturn _html_\n}')), data ? fn(data) : fn
-};
+// ========== 示例与解析 ==========
 
-
-// 麻雀虽小，五脏俱全 （循环，条件，输出变量/表达式）
-// 示例
-var render = Tpl(String(function(){/*
+// 模板
+var tpl = `
 <ul>
-  <% for(var i=0;i<n;i++){ %>
-  <li>
-    <span> <%= i %> </span>
-    <% if( i%2==0 ){ %>
-    <span> even </span>
+    <% for(var i=0; i<list.length; i++){ %>
+    <li>
+        <%= list[i].name %>
+    </li>
     <% } %>
-  </li>
-  <% } %>
 </ul>
-*/}).match(/^.*?\*([\s\S]*)\*/)[1]);
+`
+
+// 编译模板
+var render = wutpl(tpl)
 
 
-// 以上模板实际上编译成了以下代码(render函数)
-/*var render = (function(data) {
-    with (data || {}) {
-        var _html_ = ""
-        _html_ += "\n<ul>\n  "
-        
-        for (var i = 0; i < n; i++) {
-            _html_ += "\n  <li>\n    <span> "
-            _html_ += (i)
-            _html_ += " </span>\n    "
-            
-            if (i % 2 == 0) {
-                _html_ += "\n    <span> even </span>\n    "
-            
-            }
-            _html_ += "\n  </li>\n  "
-        
+// 以上模板实际上编译成了以下代码 (render函数)
+function anonymous(_data_) {
+    var _html_ = "";
+    with (_data_) {
+        _html_ += "\n<ul>\n    "
+        for (var i = 0; i < list.length; i++) {
+            _html_ += "\n    <li>\n        "
+            _html_ += list[i].name
+            _html_ += "\n    </li>\n    "
         }
         _html_ += "\n</ul>\n"
-        
-        return _html_
     }
-})*/
+    return _html_
+}
 
 
-// 使用数据执行渲染
-render({n:10})
+// 渲染数据
+var html = render({
+    list:[
+        {id:1, name:'wsf'},
+        {id:2, name:'Tom'}
+    ]
+})
+
+
+// 输出结果
+console.log(html)
 
 
 // 复以上内容到控制台运行即看到结果
