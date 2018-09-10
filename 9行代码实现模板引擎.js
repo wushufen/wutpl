@@ -57,6 +57,19 @@ var html = render({
 
 // 输出结果
 console.log(html)
+/*
+<ul>
+    
+    <li>
+        wsf
+    </li>
+    
+    <li>
+        Tom
+    </li>
+    
+</ul>
+*/
 
 
 // 复以上内容到控制台运行即看到结果
