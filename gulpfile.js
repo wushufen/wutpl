@@ -22,18 +22,3 @@ gulp.task('js', function() {
         .pipe(gulp.dest('.'));
 
 })
-
-// 浏览器实时刷新
-// browser-sync start --server --files "**/*.css, **/*.html"
-var browserSync = require('browser-sync').create();
-gulp.task('browser-sync', function() {
-    browserSync.init({
-        // open: 'ui',
-        files: ['**/*.css', '**/*.html'],
-        server: {},
-    });
-    // gulp.watch(['**/*.js'], function() {
-    //     console.log('js changed..');
-    //     browserSync.reload();
-    // })
-});
