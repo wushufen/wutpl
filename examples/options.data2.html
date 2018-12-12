@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="../wu.tmpl.js"></script>
+</head>
+<body>
+	<div wu-tmpl="{  data:{name: 'tom', date: new Date},  render:true  }">
+		hello {{ name||'world' }} !
+		<p>{{new Date}}</p>
+		<%
+		setTimeout(function(){
+			wu.tmpl.render();
+		},410);
+		%>
+	</div>
+</body>
+</html>

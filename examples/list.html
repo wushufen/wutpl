@@ -5,23 +5,27 @@
 </head>
 <body>
 
-	<ul wu-tmpl="{name:'list', data:data, render:true}">
-		{{each list item i}}
-		<li>
-			{{ item.name }}
-		</li>		
-		{{/each}}
-	</ul>
+<ul wu-tmpl="{name:'list', data:data, render:true}">
+	{{each list item i}}
+	<li>
+		<b>{{ item.name }}</b>
 
-	<script>
-		var data = {
-			list:[
-				{id:1, name:'Tom'},
-				{id:2, name:'Lily'},
-				{id:3, name:'Mary'}
-			]
-		}
-	</script>
+		{{each item.arr child}}
+		<i>{{child}}</i>
+		{{/each}}
+	</li>		
+	{{/each}}
+</ul>
+
+<script>
+	var data = {
+		list:[
+			{id:1, name:'Tom', arr:[1,2,3]},
+			{id:2, name:'Lily', arr:[4,5,6]},
+			{id:3, name:'Mary', arr:[7,8,9]}
+		]
+	}
+</script>
 
 </body>
 </html>
