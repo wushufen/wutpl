@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="./2.js"></script>
+</head>
+<body>
+
+	<div id="tpl">
+		
+		<ul>
+			<li for="item in list" :class="{even:item%2==0}">
+				{{item}}
+			</li>
+		</ul>
+
+	</div>
+
+	<script>
+		
+		var render = This.compile(tpl)
+		console.log(render, render({list:[]}))
+
+	</script>
+
+</body>
+</html>

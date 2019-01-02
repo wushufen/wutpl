@@ -8,7 +8,7 @@
 	<div id="tpl">
 		
 		<ul>
-			<li for="item in list">
+			<li for="item in list" class="{{item%2==0?'even':''}}">
 				{{item}}
 			</li>
 		</ul>
@@ -25,6 +25,53 @@
 			]
 		})
 
+	</script>
+
+	<script>
+		/*
+		var tpl = `
+		exp: {{exp}}
+
+		<input type="text" />
+
+		<div for="item in list" :class="{todo}" :attr="todo" @click="todo">
+
+			<span if="item.bool"> o </span>
+			{{item.name}}
+
+		</div>
+
+
+		`
+
+		var code = 
+		`
+		_html_+= "exp: " + (exp) + ""
+
+		this.each(list, function(item, index){  _html_+= "<div   >"
+
+			if (item.bool) { _html_+= "<span   >"
+
+				_html_+= "yes"
+
+			_html_+= "</span>"}
+
+		_html_+= "</div>"})
+
+		`
+
+
+		var render = attrtpl(tpl)
+
+		var html = render({
+			exp: 'hello world',
+			list: [
+				{bool:false, name:'wsf'}
+			]
+		})
+
+		console.log(html)
+		*/
 	</script>
 
 </body>
