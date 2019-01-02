@@ -1,5 +1,5 @@
 var attrtpl = function (tpl, data) {
-	var html = '' 
+	var code = '' 
 
 	var div = attrtpl.div || document.createElement('div')
 	div.innerHTML = tpl
@@ -13,47 +13,49 @@ var attrtpl = function (tpl, data) {
 			// tag
 			if (node.nodeType==1) {
 
-				var forAttr = node.getAttribute('for')
+				// for
+				var forAttr = node.getAttribute('v-for') || node.getAttribute('for')
 				if (forAttr) {
 					if (forAttr.match(' in ')) {
 						node.removeAttribute('for')
 						var m = forAttr.match(/^(.+?) in (.+?)$/)
-						html += 'this.each(' + m[2] + ', function('+ m[1] + ', index){' + '\n'
+						code += 'this.each(' + m[2] + ', function('+ m[1] + ', index){' + '\n'
 					} else {
 						forAttr = null
 					}
 				}
 
-				var ifAttr = node.getAttribute('if')
+				// if
+				var ifAttr = node.getAttribute('v-if') || node.getAttribute('if')
 				if (ifAttr) {
 					node.removeAttribute('if')
-					html += 'if(' + ifAttr + '){\n'
+					code += 'if(' + ifAttr + '){\n'
 				}
 
+				// <tag>
 				var tag = node.cloneNode().outerHTML
 				var tagLeft = tag.match(/^<.*?>/)[0].replace(/"/g, '\\"')
 				tagLeft = tagLeft.replace(/{{/g, '"+(').replace(/}}/g, ')+"')
-				html += '_html_+= "' + tagLeft + '"\n'
+				code += '_html_+= "' + tagLeft + '"\n'
 
-				// <tag> ^^^^^^^^^^^^^
-				
+				// childNodes
 				loop(node.childNodes)
 
-				// </tag> vvvvvvvvvvvvv
-
+				// </tag>
 				var tagRightM = node.outerHTML.match(/<\/.*?>$/)
 				if (tagRightM) {
 					var tagRight = tagRightM[0]
-					html += '_html_+= "' + tagRight + '"\n'
+					code += '_html_+= "' + tagRight + '"\n'
 				}
 
 				if (ifAttr) {
-					html += '}\n\n'
+					code += '}\n\n'
 				}
 				if (forAttr) {
-					html += '})\n\n'
+					code += '})\n\n'
 				}
 			}
+
 			// text
 			if (node.nodeType==3) {
 				var string = node.nodeValue
@@ -63,13 +65,13 @@ var attrtpl = function (tpl, data) {
 
 				string = string.replace(/{{/g, '"+(').replace(/}}/g, ')+"')
 
-				html += '_html_+= "' + string+ '"\n'
+				code += '_html_+= "' + string+ '"\n'
 			}
 		}
 
 	}
 
-	var render = Function('_data_', 'var _html_=""\nwith(_data_){' + html + '}return _html_')
+	var render = Function('_data_', 'var _html_=""\nwith(_data_){' + code + '}return _html_')
 	var _this = {
 		each: function (list, fn) {
 			for (var i = 0; i < list.length; i++) {
@@ -93,7 +95,7 @@ exp: {{exp}}
 
 <input type="text" />
 
-<div for="item in list">
+<div for="item in list" :class="{todo}" :attr="todo" @click="todo">
 
 	<span if="item.bool"> o </span>
 	{{item.name}}
