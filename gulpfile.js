@@ -11,7 +11,7 @@ gulp.task('js', function() {
     var rename = require('gulp-rename');
     var uglify = require('gulp-uglify');
 
-    gulp.src('wu.tmpl.js')
+    gulp.src('wutpl.js')
         .pipe(uglify({
             // preserveComments: 'license'
             output: {

@@ -1,10 +1,10 @@
 
-# wu.tmpl.js
+# wutpl.js
 极简高性能模板引擎  
 
 
 ![性能测试](test/test.png)  
-<!-- [性能测试](https://wusfen.github.io/wutpl/test/template_test.html) -->
+<!-- [性能测试](https://wusfen.github.io/wutpl.js/test/template_test.html) -->
 
 
 ------------------------------------------
@@ -22,13 +22,13 @@
 ------------------------------------------
 ## 如何使用
 
-1 . 引入 `<script src="path/to/wu.tmpl.js"></script>`。 下载压缩版 [wu.tmpl.min.js](https://wusfen.github.io/wutpl/wu.tmpl.min.js)
+1 . 引入 `<script src="path/to/wutpl.js"></script>`。 下载压缩版 [wutpl.min.js](https://wusfen.github.io/wutpl.js/wutpl.min.js)
 ```html
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- 引入 wu.tmpl.js 。如果使用自动渲染功能，建议放头部 -->
-	<script src="../wu.tmpl.min.js"></script>
+	<!-- 引入 wutpl.js 。如果使用自动渲染功能，建议放头部 -->
+	<script src="../wutpl.min.js"></script>
 </head>
 <body>
 
@@ -44,7 +44,7 @@
 <html>
 <head>
     <title>hello world</title>
-    <script src="../wu.tmpl.min.js"></script>
+    <script src="../wutpl.min.js"></script>
 </head>
 <body>
     <div wu-tmpl="{render:true}">
@@ -59,7 +59,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="../wu.tmpl.min.js"></script>
+	<script src="../wutpl.min.js"></script>
 </head>
 <body>
 
@@ -73,7 +73,7 @@
 
 	<script>
 		setInterval(function () {
-			wu.tmpl.render('time');
+			wutpl.render('time');
 		}, 41.666667)
 	</script>
 
@@ -104,12 +104,12 @@
 		}
 	</script>
 
-	<script src="../wu.tmpl.js"></script>
+	<script src="../wutpl.js"></script>
 </body>
 </html>
 ```
 
-3 . 更新视图 `wu.tmpl.render(name, data)`
+3 . 更新视图 `wutpl.render(name, data)`
 ```javascript
 @param  {Undefined|String|Object|Element} name -
     Undefined:不传则更新所有模板；
@@ -119,24 +119,24 @@
 @param  {Undefined|Object} data - 模板的参数
 ```
 ```javascript
-wu.tmpl.render('list')
+wutpl.render('list')
 
 // or
-wu.tmpl.render(data)
+wutpl.render(data)
 
 // or
-wu.tmpl.render('list', newData)
+wutpl.render('list', newData)
 
 // or
 var tpl = document.getElementById('tplId')
-wu.tmpl.render(tpl)
+wutpl.render(tpl)
 ```
 
 
 ------------------------------------------
 ## 手动编译模板
 
-`wu.tmpl(tpl, data)`
+`wutpl(tpl, data)`
 
 ```javascript
 @param  {String} tpl  template string
@@ -145,14 +145,14 @@ wu.tmpl.render(tpl)
 ```
 
 ```javascript
-var render = wu.tmpl('hello {{ "world" }} !')
+var render = wutpl('hello {{ "world" }} !')
 // => render function
 render()
 // => hello world !
 ```
 
 ```javascript
-wu.tmpl('hello {{ name||"world" }} !', {name:'tom'})
+wutpl('hello {{ name||"world" }} !', {name:'tom'})
 // => hello tom !
 ```
 
@@ -213,9 +213,9 @@ wu.tmpl('hello {{ name||"world" }} !', {name:'tom'})
 
 查看源代码，看怎么使用
 
-* [hello world](https://wusfen.github.io/wutpl/examples/helloWorld.html) | [源码](examples/helloWorld.html)
-* [时钟](https://wusfen.github.io/wutpl/examples/time.html) | [源码](examples/time.html)
-* [动画](https://wusfen.github.io/wutpl/examples/animate.html) | [源码](examples/animate.html)
-* [ajax](https://wusfen.github.io/wutpl/examples/ajax.html) | [源码](examples/ajax.html)
-* [list](https://wusfen.github.io/wutpl/examples/list.html) | [源码](examples/list.html)
-* [原生语法](https://wusfen.github.io/wutpl/examples/raw.html) | [源码](examples/raw.html)
+* [hello world](https://wusfen.github.io/wutpl.js/examples/helloWorld.html) | [源码](examples/helloWorld.html)
+* [时钟](https://wusfen.github.io/wutpl.js/examples/time.html) | [源码](examples/time.html)
+* [动画](https://wusfen.github.io/wutpl.js/examples/animate.html) | [源码](examples/animate.html)
+* [ajax](https://wusfen.github.io/wutpl.js/examples/ajax.html) | [源码](examples/ajax.html)
+* [list](https://wusfen.github.io/wutpl.js/examples/list.html) | [源码](examples/list.html)
+* [原生语法](https://wusfen.github.io/wutpl.js/examples/raw.html) | [源码](examples/raw.html)
