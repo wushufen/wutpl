@@ -4,7 +4,7 @@
 
 
 ![性能测试](test/test.png)  
-<!-- [性能测试](https://wusfen.github.io/wutpl.js/test/template_test.html) -->
+<!-- [性能测试](https://wusfen.github.io/wutpl/test/template_test.html) -->
 
 
 ------------------------------------------
@@ -22,7 +22,7 @@
 ------------------------------------------
 ## 如何使用
 
-1 . 引入 `<script src="path/to/wutpl.js"></script>`。 下载压缩版 [wutpl.min.js](https://wusfen.github.io/wutpl.js/wutpl.min.js)
+1 . 引入 `<script src="path/to/wutpl.js"></script>`。 下载压缩版 [wutpl.min.js](https://wusfen.github.io/wutpl/wutpl.min.js)
 ```html
 <!DOCTYPE html>
 <html>
@@ -213,9 +213,9 @@ wutpl('hello {{ name||"world" }} !', {name:'tom'})
 
 查看源代码，看怎么使用
 
-* [hello world](https://wusfen.github.io/wutpl.js/examples/helloWorld.html) | [源码](examples/helloWorld.html)
-* [时钟](https://wusfen.github.io/wutpl.js/examples/time.html) | [源码](examples/time.html)
-* [动画](https://wusfen.github.io/wutpl.js/examples/animate.html) | [源码](examples/animate.html)
-* [ajax](https://wusfen.github.io/wutpl.js/examples/ajax.html) | [源码](examples/ajax.html)
-* [list](https://wusfen.github.io/wutpl.js/examples/list.html) | [源码](examples/list.html)
-* [原生语法](https://wusfen.github.io/wutpl.js/examples/raw.html) | [源码](examples/raw.html)
+* [hello world](https://wusfen.github.io/wutpl/examples/helloWorld.html) | [源码](examples/helloWorld.html)
+* [时钟](https://wusfen.github.io/wutpl/examples/time.html) | [源码](examples/time.html)
+* [动画](https://wusfen.github.io/wutpl/examples/animate.html) | [源码](examples/animate.html)
+* [ajax](https://wusfen.github.io/wutpl/examples/ajax.html) | [源码](examples/ajax.html)
+* [list](https://wusfen.github.io/wutpl/examples/list.html) | [源码](examples/list.html)
+* [原生语法](https://wusfen.github.io/wutpl/examples/raw.html) | [源码](examples/raw.html)
