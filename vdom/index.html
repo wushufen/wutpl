@@ -5,10 +5,10 @@
 </head>
 <body>
 
-	<div id="tpl">
+	<div id="app">
 		
 		<ul>
-			<li for="item in list" :class="{even:item%2==0}">
+			<li for="item in list" if="item>5" :class="{even:item%2==0}" @click="check(item)">
 				{{item}}
 			</li>
 		</ul>
@@ -17,9 +17,30 @@
 
 	<script>
 		
-		var render = This.compile(tpl)
-		console.log(render, render({list:[]}))
+		var vm = new View({
+			el: app,
+			data: {
+				list:[]
+			},
+			methods: {
 
+			}
+		})
+
+	</script>
+
+
+
+	<script>
+		function View(options) {
+			
+		}
+
+		
+
+		function complie(node) {
+			// body...
+		}
 	</script>
 
 </body>
