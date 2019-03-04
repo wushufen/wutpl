@@ -5,7 +5,7 @@
 
 ------------------------------------------
 ## 性能测试
-[测试](https://wusfen.github.io/wutpl/test/template_test.html)  
+[测试](https://wusfen.github.io/wutpl/test/template_test.html?v=20190304.1644)  
 ![性能测试](test/test.png)  
 
 
