@@ -22,7 +22,7 @@
   function getVars(tpl) {
     var code = tpl
       .replace(/(^|}})[\s\S]*?({{|$)/g, '\n')
-      .replace(/\b(for|each|if|else ?if|else)\b/g, '')
+      .replace(/\b(for|each|if|else ?if|else|\..+?)\b/g, '')
 
     var m = code.match(/[_$a-z][_$a-z0-9]*/ig)
 
@@ -83,5 +83,7 @@
 
   if (typeof module == 'object') module.exports = wutpl
   else if (typeof global == 'object') global.wutpl = wutpl
+  else if (typeof define == 'function' && (define.amd || define.cmd))
+    define(function (require, exports, module) { module.exports = wutpl })
   else if (typeof window == 'object') window.wutpl = wutpl
 })()

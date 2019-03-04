@@ -27,7 +27,7 @@
     {{/each}}
   </ul>
 
-  <!-- 2: 引入wutpl。支持es6, requireJS -->
+  <!-- 2: 引入wutpl。支持 es6, requireJS, seaJS -->
   <script src="../wutpl.js"></script>
 
   <!-- 3: 编译与渲染 -->

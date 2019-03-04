@@ -1,7 +1,8 @@
-define(['../wu.tmpl'], function(tmpl){
+define(['../wutpl'], function (wutpl) {
 
-      var tpl = 'hello {{"world"}}';
-      var render = tmpl(tpl);
+  var tpl = 'hello {{"world"}}'
+  var render = wutpl(tpl)
+  var html = render()
 
-      document.write(render())
+  document.write(html)
 })

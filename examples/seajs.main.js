@@ -1,8 +1,9 @@
-define(function(require, exports, module) {
-    var tmpl = require('../wu.tmpl.js');
+define(function (require, exports, module) {
+    var wutpl = require('../wutpl.js')
 
-    var tpl = 'hello {{"world"}}';
-    var render = tmpl(tpl);
+    var tpl = 'hello {{"world"}}'
+    var render = wutpl(tpl)
+    var html = render()
 
-    document.write(render())
-});
+    document.write(html)
+})
