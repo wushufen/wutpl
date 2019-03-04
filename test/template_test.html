@@ -28,7 +28,12 @@
 
 <body>
 
-
+  <script>
+    // 数据量
+    var length = 100;
+    // 渲染次数
+    var number = 100;
+  </script>
 
   <h1>引擎渲染速度测试</h1>
   <p><strong>
@@ -191,11 +196,6 @@
 
 
   <script>
-    // 数据量
-    var length = 100;
-    // 渲染次数
-    var number = 100;
-
     var data = {
       list: []
     };
@@ -496,7 +496,7 @@
 
         setTimeout(function () {
           tester(target);
-        }, 1000);
+        }, 500);
 
       };
 
