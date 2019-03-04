@@ -20,7 +20,7 @@
   <ul id="tpl">
     {{each list item index}}
     <li>
-      {{item.name}}
+      {{ item.name }}
 
       {{if item.age>18}} 18+ {{/if}}
     </li>
