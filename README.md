@@ -21,6 +21,7 @@
     {{each list item index}}
     <li>
       {{item.name}}
+
       {{if item.age>18}} 18+ {{/if}}
     </li>
     {{/each}}
