@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <script src="../wu.tmpl.min.js"></script>
-</head>
-
 <body>
 
-	<div id="ct"></div>
+  <div id="out"></div>
 
-    <script src="../lib/jquery.js"></script>
-    <script>
-    	$.ajax({
-    		url: 'outerTpl.html',
-    		success: function (tpl) {
-    			var render = wu.tmpl(tpl);
-                $('#ct').html(render({
-                    list:[1,2,3,4,5,]
-                }));
-    		}
-    	});
-    </script>
+  <script src="../wutpl.js"></script>
+  <script src="../lib/ajax.js"></script>
+  <script>
+    ajax({
+      url: 'outerTpl.html',
+      success: function (tpl) {
+        var render = wutpl(tpl)
+        out.innerHTML = render()
+      }
+    })
+  </script>
 </body>
 
 </html>

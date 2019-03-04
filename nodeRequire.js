@@ -1,15 +1,15 @@
-var wutmpl = require('./wu.tmpl');
+var wutpl = require('./wutpl')
 
 var tpl = `
-{{each list item i}} [ {{ item }} ] {{if item%2==0}} 2 {{/if}}
-{{/each}}
-<% var date = new Date %>
-{{ date.getHours() }}:{{date.getMinutes()}}:{{date.getSeconds()}}
-`;
+{{for list item i}}
+  [{{i}}]{{item}}: {{if item%2==0 }} %2 = 0 {{/if}}
+{{/for}}
+`
 
-var render = wutmpl(tpl);
-var out = render({
-    list: [1, 2, 3, 4, 5]
-});
+var render = wutpl(tpl)
 
-console.log(out);
+var rs = render({
+  list: [1, 2, 3, 4, 5]
+})
+
+console.log(rs)

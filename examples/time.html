@@ -1,28 +1,44 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<script src="../wu.tmpl.js"></script>
-	<style>
-	div{font-size: 8em;}
-	small{color: #aaa; font-size: 0.6em}
-	</style>
+  <style>
+    html {
+      text-align: center;
+    }
+
+    div {
+      font-size: 8em;
+    }
+
+    small {
+      color: #aaa;
+      font-size: 0.6em
+    }
+  </style>
 </head>
+
 <body>
 
 
-	<div wu-tmpl="{name:'time'}">
-		<% var d = new Date %>
+  <div id="tpl">
+    {{ data.getHours() }}:
+    {{ data.getMinutes() }}:
+    {{ data.getSeconds() }}
+    <small>
+      {{ ( data.getMilliseconds())}}
+    </small>
+  </div>
 
-		{{ d.getHours() }}:{{ d.getMinutes() }}:{{ d.getSeconds() }}
-
-		<small> {{ ('00'+d.getMilliseconds()).slice(-3) }} </small>
-	</div>
-
-	<script>
-		setInterval(function () {
-			wu.tmpl.render('time');
-		}, 41.666667)
-	</script>
+  <script src="../wutpl.js"></script>
+  <script>
+    setInterval(function () {
+      wutpl(tpl, {
+        data: new Date
+      })
+    }, 41)
+  </script>
 
 </body>
+
 </html>

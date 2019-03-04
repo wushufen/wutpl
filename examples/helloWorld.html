@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>hello world</title>
-	<script src="../wu.tmpl.js"></script>
+  <title>hello world</title>
+  <script src="../wutpl.js"></script>
 </head>
+
 <body>
-	<div wu-tmpl="{render:true}">
-		hello {{ 'world' }} !
-	</div>
+  <div id="tpl">
+    hello {{ 'world' }} !
+  </div>
+  <script>
+    wutpl(tpl, {})
+  </script>
 </body>
+
 </html>
