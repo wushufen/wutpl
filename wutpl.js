@@ -2,7 +2,7 @@
  * @preserve https://github.com/wusfen/wutpl.js
  */
 
-; (function () {
+(function () {
   function each(list, fn) {
     if (list instanceof Array) {
       for (var i = 0; i < list.length; i++) {
