@@ -19,6 +19,10 @@
     }
   }
 
+  function escape(value) {
+    return String(value).replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  }
+
   function getVars(tpl) {
     var code = tpl
       .replace(/(^|}})[\s\S]*?({{|$)/g, '\n')
@@ -52,7 +56,8 @@
       .replace(/{{else ?if (.+?)}}/g, '\f}else if($1){\f')
       .replace(/{{else}}/g, '\f}else{\f')
       .replace(/{{\/if}}/g, '\f}\f')
-      .replace(/{{(.+?)}}/g, '\f;_html_+= $1\f')
+      .replace(/{{#(.+?)}}/g, '\f;_html_+= $1\f')
+      .replace(/{{(.+?)}}/g, '\f;_html_+= ($1)\f')
       // .replace(/(^|\f)([\s\S]+?)(\f|$)/g, ';_html_+= `$2`')
       .replace(/(^|\f)([\s\S]+?)(\f|$)/g, function ($and, $1, $2, $3) {
         return '\n_html_+= "' + $2
@@ -69,14 +74,17 @@
     var fn = Function('_data_', code)
     var render = function (data) {
       data = data || {}
-      var _this = { each: each }
+      var _this = {
+        each: each,
+        escape: escape
+      }
       var html = fn.call(_this, data)
       if (node) {
         node.innerHTML = html
       }
       return html
     }
-    render.code = code
+    render.fn = fn
 
     return data ? render(data) : render
   }

@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<script src="../wu.tmpl.js"></script>
-</head>
-<body>
-	<div wu-tmpl="{data:data, render:true}">
-		{{ content }}
-	</div>
 
-	<script>
-		var data = {
-			content: 'hello! <script>alert("xss --!!")<\/script>'
-		}
-	</script>
+<head>
+  <title>hello world</title>
+  <script src="../wutpl.js"></script>
+</head>
+
+<body>
+  <div id="tpl">
+    <div>output: {{value}}</div>
+    <div>raw: {{#value}}</div>
+  </div>
+  <script>
+    var render = wutpl(tpl)
+    render({
+      value: '<button>abc</button>'
+    })
+  </script>
 </body>
+
 </html>
