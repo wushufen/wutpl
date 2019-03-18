@@ -35,7 +35,7 @@
     for (var i = 0; i < m.length; i++) {
       var item = m[i]
       if (!map.hasOwnProperty(item)) {
-        vars += 'var ' + item + ' =_data_.' + item + '\n'
+        vars += 'var ' + item + ' ="' + item + '" in _data_? _data_.' + item + ': window.' + item + '\n'
         map[item] = true
       }
     }

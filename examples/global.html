@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>hello world</title>
+  <script src="../wutpl.js"></script>
+</head>
+
+<body>
+  <div id="tpl">
+    {{ JSON.stringify({key:"value"}) }}
+  </div>
+  <script>
+    var render = wutpl(tpl)
+    render()
+  </script>
+</body>
+
+</html>
