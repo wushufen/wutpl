@@ -58,8 +58,8 @@
       .replace(/{{\/if}}/g, '\f}\f')
       .replace(/{{#(.+?)}}/g, '\f;_html_+= $1\f')
       .replace(/{{(.+?)}}/g, '\f;_html_+= ($1)\f')
-      // .replace(/(^|\f)([\s\S]+?)(\f|$)/g, ';_html_+= `$2`')
-      .replace(/(^|\f)([\s\S]+?)(\f|$)/g, function ($and, $1, $2, $3) {
+      // .replace(/(^|\f)([\s\S]*?)(\f|$)/g, ';_html_+= `$2`')
+      .replace(/(^|\f)([\s\S]*?)(\f|$)/g, function ($and, $1, $2, $3) {
         return '\n_html_+= "' + $2
           .replace(/\\/g, '\\\\')
           .replace(/"/g, '\\"')
