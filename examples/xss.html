@@ -10,11 +10,12 @@
   <div id="tpl">
     <div>output: {{value}}</div>
     <div>raw: {{#value}}</div>
+    <button onclick="alert()"> xss </button>
   </div>
   <script>
     var render = wutpl(tpl)
     render({
-      value: '<button>abc</button>'
+      value: '<button onclick="alert()"> xss </button>'
     })
   </script>
 </body>

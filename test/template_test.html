@@ -63,7 +63,7 @@
     <script id="wutpl" type="text/tmpl">
     <ul>
         {{each list item index}}
-            <li>用户: {{item.user}}/ 网站：{{item.site}}</li>
+            <li>用户: {{#item.user}}/ 网站：{{#item.site}}</li>
         {{/each}}
     </ul>
     </script>

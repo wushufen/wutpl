@@ -89,12 +89,17 @@ var html = wutpl(tpl, data)
 ```javascript
 {{ bool? 'yes': 'no' }}
 ```
+* {{# expression}}
+```javascript
+{{ '<button onclick="alert()"> xss </button>' }}
+```
 
 
 ## 实例
 
 * [hello world](https://wusfen.github.io/wutpl/examples/helloWorld.html) | [源码](examples/helloWorld.html)
+* [list](https://wusfen.github.io/wutpl/examples/list.html) | [源码](examples/list.html)
+* [ajax](https://wusfen.github.io/wutpl/examples/ajax.html) | [源码](examples/ajax.html)
+* [xss](https://wusfen.github.io/wutpl/examples/xss.html) | [源码](examples/xss.html)
 * [时钟](https://wusfen.github.io/wutpl/examples/time.html) | [源码](examples/time.html)
 * [动画](https://wusfen.github.io/wutpl/examples/animate.html) | [源码](examples/animate.html)
-* [ajax](https://wusfen.github.io/wutpl/examples/ajax.html) | [源码](examples/ajax.html)
-* [list](https://wusfen.github.io/wutpl/examples/list.html) | [源码](examples/list.html)
