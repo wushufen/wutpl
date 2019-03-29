@@ -8,11 +8,10 @@
 
 <body>
   <div id="tpl">
-    hello {{# 'world' }}
+    hello {{ 'world' }}
   </div>
   <script>
-    var render = wutpl(tpl)
-    render()
+    wutpl(tpl)()
   </script>
 </body>
 

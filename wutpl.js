@@ -30,7 +30,7 @@
       .replace(/(^|}})[\s\S]*?({{|$)/g, '\n')
       .replace(/\b(for|each|if|else ?if|else|\..+?)\b/g, '')
 
-    var m = code.match(/[_$a-z][_$a-z0-9]*/ig)
+    var m = code.match(/[_$a-z][_$a-z0-9]*/ig) || []
 
     var vars = ''
     var map = {}
@@ -62,7 +62,7 @@
       .replace(/{{(.+?)}}/g, '\f;_html_+= this.escape($1)\f')
       // .replace(/(^|\f)([\s\S]*?)(\f|$)/g, ';_html_+= `$2`')
       .replace(/(^|\f)([\s\S]*?)(\f|$)/g, function ($and, $1, $2, $3) {
-        return '\n_html_+= "' + $2
+        return '\n;_html_+= "' + $2
           .replace(/\\/g, '\\\\')
           .replace(/"/g, '\\"')
           .replace(/\r?\n/g, '\\n')
