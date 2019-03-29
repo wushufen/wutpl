@@ -3,24 +3,26 @@
  */
 
 (function () {
-  function each(list, fn) {
-    if (list instanceof Array) {
-      for (var i = 0; i < list.length; i++) {
-        var item = list[i]
-        fn(item, i)
-      }
-    } else {
-      for (var key in list) {
-        if (list.hasOwnProperty(key)) {
-          var item = list[key]
-          fn(item, key)
+  var _this = {
+    global: Function('return this')(),
+    each: function (list, fn) {
+      if (list instanceof Array) {
+        for (var i = 0; i < list.length; i++) {
+          var item = list[i]
+          fn(item, i)
+        }
+      } else {
+        for (var key in list) {
+          if (list.hasOwnProperty(key)) {
+            var item = list[key]
+            fn(item, key)
+          }
         }
       }
+    },
+    escape: function (value) {
+      return String(value).replace(/</g, '&lt;').replace(/>/g, '&gt;')
     }
-  }
-
-  function escape(value) {
-    return String(value).replace(/</g, '&lt;').replace(/>/g, '&gt;')
   }
 
   function getVars(tpl) {
@@ -35,7 +37,7 @@
     for (var i = 0; i < m.length; i++) {
       var item = m[i]
       if (!map.hasOwnProperty(item)) {
-        vars += 'var ' + item + ' ="' + item + '" in _data_? _data_.' + item + ': window.' + item + '\n'
+        vars += 'var ' + item + ' ="' + item + '" in _data_? _data_.' + item + ': this.global.' + item + '\n'
         map[item] = true
       }
     }
@@ -74,10 +76,6 @@
     var fn = Function('_data_', code)
     var render = function (data) {
       data = data || {}
-      var _this = {
-        each: each,
-        escape: escape
-      }
       var html = fn.call(_this, data)
       if (node) {
         node.innerHTML = html

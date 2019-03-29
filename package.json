@@ -1,0 +1,28 @@
+{
+  "name": "wutpl",
+  "version": "1.0.1",
+  "description": "js template",
+  "main": "wutpl",
+  "directories": {
+    "example": "examples",
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wusfen/wutpl.git"
+  },
+  "keywords": [
+    "js",
+    "template"
+  ],
+  "author": "wushufen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wusfen/wutpl/issues"
+  },
+  "homepage": "https://github.com/wusfen/wutpl#readme"
+}

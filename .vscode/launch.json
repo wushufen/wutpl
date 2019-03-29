@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "nodeRequire",
-      "program": "${workspaceFolder}/nodeRequire.js"
+      "program": "${workspaceFolder}/examples/nodeRequire.js"
     },
     {
       "type": "node",
