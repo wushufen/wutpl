@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <ul id="tpl">
+    {{each list item index}}
+    <li>
+      {{for item.children child i}}
+      <span>{{child}}</span>
+      {{/for}}
+    </li>
+    {{/each}}
+  </ul>
+
+  <script src="../wutpl.js"></script>
+  <script>
+    wutpl(tpl, {
+      list: [
+        { id: 1, name: 'Tom', age: 21, children:[1,2,3] },
+        { id: 2, name: 'Lily', age: 17, children: [4,5,6] },
+        { id: 3, name: 'Mary', age: 18, children: [7,8,9] }
+      ]
+    })
+  </script>
+
+</body>
+
+</html>

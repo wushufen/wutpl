@@ -9,7 +9,7 @@
       if (list instanceof Array) {
         for (var i = 0; i < list.length; i++) {
           var item = list[i]
-          fn(item, i)
+          fn.call(this, item, i)
         }
       } else {
         for (var key in list) {
