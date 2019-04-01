@@ -46,6 +46,15 @@
 </html>
 ```
 
+## 安装
+```
+npm i -D wutpl
+```
+or
+```html
+<script src="../wutpl.js"></script>
+```
+
 
 ## API
 ```javascript
