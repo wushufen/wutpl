@@ -59,6 +59,9 @@ or
 ## API
 ```javascript
 var render = wutpl(tpl)
+var html = render(data)
+```
+```javascript
 var html = wutpl(tpl, data)
 ```
 * tpl {String|Node}: 字符串模板或者节点。节点使用innerHTML作为模板
