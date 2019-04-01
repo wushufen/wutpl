@@ -73,7 +73,7 @@ var html = wutpl(tpl, data)
 ------------------------------------------
 ## 模板语法
 
-* if, else, elseif, else if, 
+* if, else, elseif, else if
 ```javascript
 {{if 条件1}}
  ...
