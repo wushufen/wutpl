@@ -4,8 +4,10 @@
 <body>
 
   <ul id="tpl">
-    {{for data value key}}
+    {{for data value key index}}
     <li>
+      <b>{{index}}|{{key}}:</b>
+
       {{for value item i}}
       <span>{{item}}</span>
       {{/for}}
@@ -15,7 +17,8 @@
 
   <script src="../wutpl.js"></script>
   <script>
-    wutpl(tpl, {
+    var render = wutpl(tpl)
+    render({
       data: {
         key1: [1,2,3],
         key2: [4,5,6]

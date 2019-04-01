@@ -9,13 +9,14 @@
       if (list instanceof Array) {
         for (var i = 0; i < list.length; i++) {
           var item = list[i]
-          fn.call(this, item, i)
+          fn.call(this, item, i, i)
         }
       } else {
+        var i = 0
         for (var key in list) {
           if (list.hasOwnProperty(key)) {
             var item = list[key]
-            fn.call(this, item, key)
+            fn.call(this, item, key, i++)
           }
         }
       }
@@ -52,7 +53,8 @@
     }
     var code = tpl
       .replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-      .replace(/{{(?:each|for) (.+?) (.+?)(?: (.+?))?}}/g, '\f;this.each($1, function($2, $3){\f')
+      .replace(/{{(?:each|for)( .+?)( .+?)( .+?)( .+?)}}/g, '\f;this.each($1, function($2, $3, $4){\f')
+      .replace(/{{(?:each|for)( .+?)( .+?)( .+?)?}}/g, '\f;this.each($1, function($2, $3){\f')
       .replace(/{{\/(?:each|for)}}/g, '\f})\f')
       .replace(/{{if (.+?)}}/g, '\f;if($1){\f')
       .replace(/{{else ?if (.+?)}}/g, '\f}else if($1){\f')

@@ -73,7 +73,7 @@ var html = wutpl(tpl, data)
 ------------------------------------------
 ## 模板语法
 
-* if, else, else if
+* if, else, elseif, else if, 
 ```javascript
 {{if 条件1}}
  ...
@@ -85,12 +85,12 @@ var html = wutpl(tpl, data)
 ```
 * each
 ```javascript
-{{for array item index}}
+{{for array item index?}}
  ...
 {{/for}}
 ```
 ```javascript
-{{for object value key}}
+{{for object value key? index?}}
  ...
 {{/for}}
 ```
