@@ -100,7 +100,7 @@ var html = wutpl(tpl, data)
 ```
 * {{# expression}}
 ```javascript
-{{ '<button onclick="alert()"> xss </button>' }}
+{{# '<button onclick="alert()"> xss </button>' }}
 ```
 
 
