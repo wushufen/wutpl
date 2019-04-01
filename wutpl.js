@@ -62,6 +62,7 @@
       .replace(/{{\/if}}/g, '\f}\f')
       .replace(/{{#(.+?)}}/g, '\f;_html_+= $1\f')
       .replace(/{{(.+?)}}/g, '\f;_html_+= this.escape($1)\f')
+      .replace(/ wutpl-src=/g, ' src=')
       // .replace(/(^|\f)([\s\S]*?)(\f|$)/g, ';_html_+= `$2`')
       .replace(/(^|\f)([\s\S]*?)(\f|$)/g, function ($and, $1, $2, $3) {
         return '\n;_html_+= "' + $2

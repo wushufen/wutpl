@@ -105,6 +105,13 @@ var html = wutpl(tpl, data)
 ```javascript
 {{# '<button onclick="alert()"> xss </button>' }}
 ```
+* wutpl-src
+```html
+<!-- 如果用html节点做为模板，浏览器解析到该节点马上就请求{{src}}，会有一个不必要的404 -->
+<img src="{{src}}">
+<!-- 可以这样去掉这个404 -->
+<img wutpl-src="{{src}}">
+```
 
 
 ## 实例
