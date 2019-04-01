@@ -15,7 +15,7 @@
         for (var key in list) {
           if (list.hasOwnProperty(key)) {
             var item = list[key]
-            fn(item, key)
+            fn.call(this, item, key)
           }
         }
       }
