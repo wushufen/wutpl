@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>error</title>
+  <script src="../wutpl.js"></script>
+</head>
+
+<body>
+  <div id="tpl">
+    hello {{ x.x }}
+  </div>
+  <script>
+    var render = wutpl(tpl)
+    console.log(render.fn)
+    render()
+  </script>
+</body>
+
+</html>
