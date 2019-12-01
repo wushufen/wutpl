@@ -5,6 +5,7 @@
   <style>
     html {
       text-align: center;
+      font-family: monospace;
     }
 
     div {
@@ -22,11 +23,11 @@
 
 
   <div id="tpl">
-    {{ data.getHours() }}:
-    {{ data.getMinutes() }}:
+    {{ data.getHours() }} :
+    {{ data.getMinutes() }} :
     {{ data.getSeconds() }}
     <small>
-      {{ ( data.getMilliseconds())}}
+      {{ ( '00' + data.getMilliseconds() ).slice(-3) }}
     </small>
   </div>
 
