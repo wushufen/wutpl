@@ -46,6 +46,13 @@
     return vars
   }
 
+  function tag(str) {
+  var leftTag = '(?:' + wutpl.leftTag + ')'
+  var rightTag = '(?:' + wutpl.rightTag + ')'
+    var reg = RegExp(leftTag + str + rightTag, 'g')
+    return reg
+  }
+
   function wutpl(tpl, data) {
     if (tpl.nodeType == 1) {
       var node = tpl
@@ -53,15 +60,15 @@
     }
     var code = tpl
       .replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-      .replace(/{{(?:each|for)( .+?)( .+?)( .+?)( .+?)}}/g, '\f;this.each($1, function($2, $3, $4){\f')
-      .replace(/{{(?:each|for)( .+?)( .+?)( .+?)?}}/g, '\f;this.each($1, function($2, $3){\f')
-      .replace(/{{\/(?:each|for)}}/g, '\f})\f')
-      .replace(/{{if (.+?)}}/g, '\f;if($1){\f')
-      .replace(/{{else ?if (.+?)}}/g, '\f}else if($1){\f')
-      .replace(/{{else}}/g, '\f}else{\f')
-      .replace(/{{\/if}}/g, '\f}\f')
-      .replace(/{{#(.+?)}}/g, '\f;_html_+= $1\f')
-      .replace(/{{(.+?)}}/g, '\f;_html_+= this.escape($1)\f')
+      .replace(tag('(?:each|for)( .+?)( .+?)( .+?)( .+?)'), '\f;this.each($1, function($2, $3, $4){\f')
+      .replace(tag('(?:each|for)( .+?)( .+?)( .+?)?'), '\f;this.each($1, function($2, $3){\f')
+      .replace(tag('/(?:each|for)'), '\f})\f')
+      .replace(tag('if (.+?)'), '\f;if($1){\f')
+      .replace(tag('else ?if (.+?)'), '\f}else if($1){\f')
+      .replace(tag('else'), '\f}else{\f')
+      .replace(tag('/if'), '\f}\f')
+      .replace(tag('#(.+?)'), '\f;_html_+= $1\f')
+      .replace(tag('(.+?)'), '\f;_html_+= this.escape($1)\f')
       .replace(/ wutpl-src=/g, ' src=')
       // .replace(/(^|\f)([\s\S]*?)(\f|$)/g, ';_html_+= `$2`')
       .replace(/(^|\f)([\s\S]*?)(\f|$)/g, function ($and, $1, $2, $3) {
@@ -89,6 +96,9 @@
 
     return data ? render(data) : render
   }
+
+  wutpl.leftTag = '<!-- {{|{{'
+  wutpl.rightTag = '}} -->|}}'
 
   if (typeof module == 'object') module.exports = wutpl
   else if (typeof global == 'object') global.wutpl = wutpl

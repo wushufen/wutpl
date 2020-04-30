@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <table id="tpl">
+    <tbody>
+      <!-- {{each list item index}} -->
+      <tr>
+        <td>{{item.name}}</td>
+        <td>{{if item.age>18}} 18+ {{/if}}</td>
+      </tr>
+      <!-- {{/each}} -->
+    </tbody>
+  </table>
+
+  <script src="../wutpl.js"></script>
+  <script>
+    wutpl(tpl, {
+      list: [
+        { id: 1, name: 'Tom', age: 21 },
+        { id: 2, name: 'Lily', age: 17 },
+        { id: 3, name: 'Mary', age: 18 }
+      ]
+    })
+  </script>
+
+</body>
+
+</html>
