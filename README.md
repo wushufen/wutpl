@@ -64,10 +64,10 @@ var html = render(data)
 ```javascript
 var html = wutpl(tpl, data)
 ```
-* tpl {String|Node}: 字符串模板或者节点。节点使用innerHTML作为模板
-* data {Object}: 模板数据
-* render(data) {Function}: 渲染函数。若为节点模板会自动更新
-* html: {String}: 渲染后的html字符串
+* tpl: {String|Node} 字符串模板或者dom节点，dom节点使用innerHTML作为模板
+* data: {Object} 模板数据
+* render(data): {Function} 渲染函数，若模板为dom节点模板则更新该节点
+* html: {String} 渲染后的html字符串
 
 
 ------------------------------------------
@@ -112,19 +112,19 @@ var html = wutpl(tpl, data)
 <!-- 可以这样去掉这个404 -->
 <img wutpl-src="{{src}}">
 ```
-* table each  
-在 html 中， `<table>`, `<tbody>` 等标签之间是不允许有文本的，可以采取一下写法
+* table each
 ```html
-  <table>
-    <tbody>
-      <!-- {{each list item index}} -->
-      <tr>
-        <td>{{item.name}}</td>
-        <td>{{if item.age>18}} 18+ {{/if}}</td>
-      </tr>
-      <!-- {{/each}} -->
-    </tbody>
-  </table>
+<!-- 在 html 中， `<table>`, `<tbody>` 等标签之间是不允许有文本的，可以采取一下写法 -->
+<table>
+  <tbody>
+    <!-- {{each list item index}} -->
+    <tr>
+      <td>{{item.name}}</td>
+      <td>{{if item.age>18}} 18+ {{/if}}</td>
+    </tr>
+    <!-- {{/each}} -->
+  </tbody>
+</table>
 ```
 
 ## 标签配置

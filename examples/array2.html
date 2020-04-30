@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 
+<head>
+  <script src="../wutpl.js"></script>
+</head>
+
 <body>
 
   <ul id="tpl">
@@ -15,13 +19,12 @@
     {{/for}}
   </ul>
 
-  <script src="../wutpl.js"></script>
   <script>
     var render = wutpl(tpl)
     render({
       data: {
-        key1: [1,2,3],
-        key2: [4,5,6]
+        key1: [1, 2, 3],
+        key2: [4, 5, 6]
       }
     })
   </script>

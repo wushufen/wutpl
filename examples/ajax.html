@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 
+<head>
+  <script src="../wutpl.js"></script>
+  <script src="../lib/ajax.js"></script>
+</head>
+
 <body>
 
   <ul id="tpl">
@@ -11,8 +16,6 @@
     {{/each}}
   </ul>
 
-  <script src="../wutpl.js"></script>
-  <script src="../lib/ajax.js"></script>
   <script>
     ajax({
       url: 'ajax.json',

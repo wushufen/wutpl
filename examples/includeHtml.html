@@ -12,7 +12,7 @@
       url: 'outerTpl.html',
       success: function (tpl) {
         var render = wutpl(tpl)
-        out.innerHTML = render()
+        out.innerHTML = render({name:'wutpl'})
       }
     })
   </script>

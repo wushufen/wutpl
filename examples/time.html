@@ -4,11 +4,11 @@
 <head>
   <style>
     html {
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 60vh;
       font-family: monospace;
-    }
-
-    div {
       font-size: 8em;
     }
 
@@ -17,6 +17,7 @@
       font-size: 0.6em
     }
   </style>
+  <script src="../wutpl.js"></script>
 </head>
 
 <body>
@@ -31,13 +32,14 @@
     </small>
   </div>
 
-  <script src="../wutpl.js"></script>
   <script>
-    setInterval(function () {
+    !function run() {
       wutpl(tpl, {
         data: new Date
       })
-    }, 41)
+
+      setTimeout(run)
+    }()
   </script>
 
 </body>
