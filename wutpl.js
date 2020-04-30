@@ -49,8 +49,7 @@
   function tag(str) {
     var leftTag = '(?:' + wutpl.leftTag + ')'
     var rightTag = '(?:' + wutpl.rightTag + ')'
-    var reg = RegExp(leftTag + str + rightTag, 'g')
-    return reg
+    return RegExp(leftTag + str + rightTag, 'g')
   }
 
   function wutpl(tpl, data) {
