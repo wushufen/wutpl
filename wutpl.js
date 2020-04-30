@@ -47,8 +47,8 @@
   }
 
   function tag(str) {
-  var leftTag = '(?:' + wutpl.leftTag + ')'
-  var rightTag = '(?:' + wutpl.rightTag + ')'
+    var leftTag = '(?:' + wutpl.leftTag + ')'
+    var rightTag = '(?:' + wutpl.rightTag + ')'
     var reg = RegExp(leftTag + str + rightTag, 'g')
     return reg
   }
