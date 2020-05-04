@@ -22,21 +22,16 @@
 
 <body>
 
-
   <div id="tpl">
-    {{ data.getHours() }} :
-    {{ data.getMinutes() }} :
-    {{ data.getSeconds() }}
+    {{ date.getHours() }} : {{ date.getMinutes() }} : {{ date.getSeconds() }}
     <small>
-      {{ ( '00' + data.getMilliseconds() ).slice(-3) }}
+      {{ ( '00' + date.getMilliseconds() ).slice(-3) }}
     </small>
   </div>
 
   <script>
     !function run() {
-      wutpl(tpl, {
-        data: new Date
-      })
+      wutpl(tpl, { date: new Date })
 
       setTimeout(run)
     }()
