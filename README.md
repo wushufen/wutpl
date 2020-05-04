@@ -2,11 +2,17 @@
 # wutpl.js
 极简高性能模板引擎  
 
+## 特点
+本模板引擎主要解决以下问题
+* 模板语法太复杂或者比较奇怪
+* 有些模板引擎性能性能较差，比如使用了 `with` 
+* 有些模板引擎不能直接使用全局变量（比如 `parseInt`, `Math`, `JSON` 等）
+* 有些模板引擎使用变量需要加前缀，比如 `this.value`, `data.value`, `it.value`
 
 ------------------------------------------
 ## 性能测试
 [点这测试](https://wusfen.github.io/wutpl/test/template_test.html?v=20190304.1644)  
-![性能测试](test/test.20190308.1422.png)  
+![性能测试](https://wusfen.github.io/wutpl/test/test.20190308.1422.png)  
 
 
 ## 使用方法
@@ -83,7 +89,7 @@ var html = wutpl(tpl, data)
  ...
 {{/if}}
 ```
-* each
+* for / each
 ```javascript
 {{for array item index?}}
  ...

@@ -55,7 +55,12 @@
   function wutpl(tpl, data) {
     if (tpl.nodeType == 1) {
       var node = tpl
-      tpl = node.tpl || (node.tpl = node.innerHTML)
+      if (node.tpl) {
+        tpl = node.tpl
+      } else {
+        tpl = node.tpl = node.innerHTML
+        node.innerHTML = ''
+      }
     }
     var code = tpl
       .replace(/&lt;/g, '<').replace(/&gt;/g, '>')
