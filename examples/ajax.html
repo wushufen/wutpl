@@ -17,12 +17,14 @@
   </ul>
 
   <script>
+    var render = wutpl(tpl)
+    
     ajax({
       url: 'ajax.json',
       success: function (data) {
-        wutpl(tpl, data)
+        render(data)
       }
-    });
+    })
   </script>
 </body>
 
