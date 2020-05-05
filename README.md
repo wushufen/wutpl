@@ -145,6 +145,17 @@ var html = wutpl(tpl, data)
   wutpl.leftTag = '<!-- {|{'
   wutpl.rightTag = '} -->|}'
 ```
+```javascript
+ {for array item index?} {/for}
+
+ {for object value key? index?} {/for}
+
+ {if bool} yes {else} no {/if}
+
+ {value}
+
+ {#html}
+```
 
 
 ## 实例
