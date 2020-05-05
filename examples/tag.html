@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="../wutpl.js"></script>
+</head>
+
+<body>
+
+  <ul id="tpl">
+    <!-- {each list item index} -->
+    <li>
+      { item.name }
+      {if item.age>18} 18+ {/if}
+    </li>
+    <!-- {/each} -->
+  </ul>
+
+  <script>
+    wutpl.leftTag = '<!-- {|{'
+    wutpl.rightTag = '} -->|}'
+
+    wutpl(tpl, {
+      list: [
+        { id: 1, name: 'Tom', age: 21 },
+        { id: 2, name: 'Lily', age: 17 },
+        { id: 3, name: 'Mary', age: 18 }
+      ]
+    })
+  </script>
+
+</body>
+
+</html>

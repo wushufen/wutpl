@@ -26,10 +26,15 @@
     }
   }
 
+  function tag(str) {
+    var leftTag = '(?:' + wutpl.leftTag + ')'
+    var rightTag = '(?:' + wutpl.rightTag + ')'
+    return RegExp(leftTag + str + rightTag, 'g')
+  }
+
   function getVars(tpl) {
-    var code = tpl
-      .replace(/(^|}})[\s\S]*?({{|$)/g, '\n')
-      .replace(/\b(for|each|if|else ?if|else|\..+?)\b/g, '')
+    var code = tpl.match(tag('.*')).join()
+      .replace(/\b(for|each|if|else|\..+?)\b/g, '')
 
     var m = code.match(/[_$a-z][_$a-z0-9]*/ig) || []
 
@@ -44,12 +49,6 @@
     }
 
     return vars
-  }
-
-  function tag(str) {
-    var leftTag = '(?:' + wutpl.leftTag + ')'
-    var rightTag = '(?:' + wutpl.rightTag + ')'
-    return RegExp(leftTag + str + rightTag, 'g')
   }
 
   function wutpl(tpl, data) {
@@ -72,7 +71,7 @@
       .replace(tag('else'), '\f}else{\f')
       .replace(tag('/if'), '\f}\f')
       .replace(tag('#(.+?)'), '\f;_html_+= $1\f')
-      .replace(tag('(.+?)'), '\f;_html_+= this.escape($1)\f')
+      .replace(tag('([^\f]+?)'), '\f;_html_+= this.escape($1)\f')
       .replace(/ wutpl-src=/g, ' src=')
       // .replace(/(^|\f)([\s\S]*?)(\f|$)/g, ';_html_+= `$2`')
       .replace(/(^|\f)([\s\S]*?)(\f|$)/g, function ($and, $1, $2, $3) {

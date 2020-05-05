@@ -4,10 +4,10 @@
 
 ## 特点
 本模板引擎主要解决以下问题
-* 模板语法太复杂或者比较奇怪
-* 有些模板引擎性能性能较差，比如使用了 `with` 
-* 有些模板引擎不能直接使用全局变量（比如 `parseInt`, `Math`, `JSON` 等）
-* 有些模板引擎使用变量需要加前缀，比如 `this.value`, `data.value`, `it.value`
+* 有的模板引擎语法太复杂或者比较奇怪
+* 有的模板引擎性能性能较差，比如使用了 `with` 
+* 有的模板引擎不能直接使用全局变量（比如 `parseInt`, `Math`, `JSON` 等）
+* 有的模板引擎使用变量需要加前缀，比如 `this.value`, `data.value`, `it.value`
 
 ------------------------------------------
 ## 性能测试
@@ -20,21 +20,22 @@
 <!DOCTYPE html>
 <html>
 
+<head>
+  <!-- 1: 引入wutpl。支持 es6, requireJS, seaJS -->
+  <script src="../wutpl.js"></script>
+</head>
+
 <body>
-  
-  <!-- 1: 编写模板 -->
+
+  <!-- 2: 编写模板 -->
   <ul id="tpl">
     {{each list item index}}
     <li>
       {{ item.name }}
-
       {{if item.age>18}} 18+ {{/if}}
     </li>
     {{/each}}
   </ul>
-
-  <!-- 2: 引入wutpl。支持 es6, requireJS, seaJS -->
-  <script src="../wutpl.js"></script>
 
   <!-- 3: 编译与渲染 -->
   <script>
@@ -134,9 +135,15 @@ var html = wutpl(tpl, data)
 ```
 
 ## 标签配置
+默认
 ```javascript
   wutpl.leftTag = '<!-- {{|{{'
   wutpl.rightTag = '}} -->|}}'
+```
+可以自定义为单花括号
+```javascript
+  wutpl.leftTag = '<!-- {|{'
+  wutpl.rightTag = '} -->|}'
 ```
 
 
