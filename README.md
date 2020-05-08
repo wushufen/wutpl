@@ -9,7 +9,6 @@
 * 有的模板引擎不能直接使用全局变量（比如 `parseInt`, `Math`, `JSON` 等）
 * 有的模板引擎使用变量需要加前缀，比如 `this.value`, `data.value`, `it.value`
 
-------------------------------------------
 ## 性能测试
 [点这测试](https://wusfen.github.io/wutpl/test/template_test.html?v=20190304.1644)  
 ![性能测试](https://wusfen.github.io/wutpl/test/test.20190308.1422.png)  
@@ -71,7 +70,6 @@ var html = wutpl(tpl, data)
 * html: {String} 渲染后的html字符串
 
 
-------------------------------------------
 ## 模板语法
 
 * 超简洁的模板语法
