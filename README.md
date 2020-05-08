@@ -66,7 +66,7 @@ var html = wutpl(tpl, data)
 ```
 * tpl: {String|Node} 字符串模板或者dom节点，dom节点使用innerHTML作为模板
 * data: {Object} 模板数据
-* render(data): {Function} 渲染函数，若模板为dom节点模板则更新该节点
+* render(data): {Function} 渲染函数，若模板为dom节点，render会自动更新视图
 * html: {String} 渲染后的html字符串
 
 
