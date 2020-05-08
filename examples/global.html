@@ -7,10 +7,12 @@
 </head>
 
 <body>
-  <div id="tpl">{{ JSON.stringify({key:"value"}) }}</div>
+  <div id="tpl">{ JSON.stringify(obj) }</div>
   <script>
     var render = wutpl(tpl)
-    render()
+    render({
+      obj: {a:1,b:2}
+    })
   </script>
 </body>
 

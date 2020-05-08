@@ -1,10 +1,10 @@
 var wutpl = require('../wutpl')
 
 var tpl = `
-{{JSON.stringify(list)}}
-{{for list item i}}
-  [{{i}}]{{item}}: {{if item%2==0 }} %2 = 0 {{/if}}
-{{/for}}
+{JSON.stringify(list)}
+{for list item i}
+  [{i}] {item} {if item%2==0 }%2 = 0{/if}
+{/for}
 `
 
 var render = wutpl(tpl)

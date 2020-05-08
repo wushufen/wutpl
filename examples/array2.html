@@ -8,15 +8,15 @@
 <body>
 
   <ul id="tpl">
-    {{for data value key index}}
+    {for data value key index}
     <li>
-      <b>{{index}}|{{key}}:</b>
+      <b>{index}|{key}:</b>
 
-      {{for value item i}}
-      <span>{{item}}</span>
-      {{/for}}
+      {for value item i}
+      <span>{item}</span>
+      {/for}
     </li>
-    {{/for}}
+    {/for}
   </ul>
 
   <script>

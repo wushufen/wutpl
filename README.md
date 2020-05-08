@@ -21,30 +21,24 @@
 <html>
 
 <head>
-  <!-- 1: 引入wutpl。支持 es6, requireJS, seaJS -->
+  <!-- 1: 引入wutpl，支持 es6 requireJS seaJS -->
   <script src="../wutpl.js"></script>
 </head>
 
 <body>
 
   <!-- 2: 编写模板 -->
-  <ul id="tpl">
-    {{each list item index}}
-    <li>
-      {{ item.name }}
-      {{if item.age>18}} 18+ {{/if}}
-    </li>
-    {{/each}}
-  </ul>
+  <div id="tpl">
+    {for list item}
+    <span>{item}</span>
+    {/for}
+  </div>
 
   <!-- 3: 编译与渲染 -->
   <script>
-    wutpl(tpl, {
-      list: [
-        { id: 1, name: 'Tom', age: 21 },
-        { id: 2, name: 'Lily', age: 17 },
-        { id: 3, name: 'Mary', age: 18 }
-      ]
+    var render = wutpl(tpl)
+    render({
+      list: [1, 2, 3]
     })
   </script>
 
@@ -80,56 +74,35 @@ var html = wutpl(tpl, data)
 ------------------------------------------
 ## 模板语法
 
-* if, else, elseif, else if
+* 超简洁的模板语法
 ```javascript
-{{if 条件1}}
- ...
-{{else if 条件2}}
- ...
-{{else}}
- ...
-{{/if}}
-```
-* for / each
-```javascript
-{{for array item index?}}
- ...
-{{/for}}
-```
-```javascript
-{{for object value key? index?}}
- ...
-{{/for}}
-```
-* {{ expression }}
-```javascript
-{{ 1+1 }}
-```
-```javascript
-{{ bool? 'yes': 'no' }}
-```
-* {{# expression}}
-```javascript
-{{# '<button onclick="alert()"> xss </button>' }}
+ {for array item index?} {/for}
+
+ {for object value key? index?} {/for}
+
+ {if bool} yes {else} no {/if}
+
+ {value}
+
+ {#html}
 ```
 * wutpl-src
 ```html
-<!-- 如果用html节点做为模板，浏览器解析到该节点马上就请求{{src}}，会有一个不必要的404 -->
-<img src="{{src}}">
+<!-- 如果用html节点做为模板，浏览器解析到该节点马上就请求{src}，会有一个不必要的404 -->
+<img src="{src}">
 <!-- 可以这样去掉这个404 -->
-<img wutpl-src="{{src}}">
+<img wutpl-src="{src}">
 ```
 * table each
 ```html
-<!-- 在 html 中， `<table>`, `<tbody>` 等标签之间是不允许有文本的，可以采取一下写法 -->
+<!-- 如果用html节点做为模板， `<table>` 等标签之间是不允许有文本的，可用注释写法 -->
 <table>
   <tbody>
-    <!-- {{each list item index}} -->
+    <!-- {for list item} -->
     <tr>
-      <td>{{item.name}}</td>
-      <td>{{if item.age>18}} 18+ {{/if}}</td>
+      <td>{item.name}</td>
     </tr>
-    <!-- {{/each}} -->
+    <!-- {/for} -->
   </tbody>
 </table>
 ```
@@ -137,13 +110,13 @@ var html = wutpl(tpl, data)
 ## 标签配置
 默认
 ```javascript
-  wutpl.leftTag = '<!-- {{|{{'
-  wutpl.rightTag = '}} -->|}}'
-```
-可以自定义为单花括号
-```javascript
   wutpl.leftTag = '<!-- {|{'
   wutpl.rightTag = '} -->|}'
+```
+可以自定义为双花括号
+```javascript
+  wutpl.leftTag = '<!-- {{|{{'
+  wutpl.rightTag = '}} -->|}}'
 ```
 
 

@@ -23,9 +23,9 @@
 <body>
 
   <div id="tpl">
-    {{ date.getHours() }} : {{ date.getMinutes() }} : {{ date.getSeconds() }}
+    { date.getHours() } : { date.getMinutes() } : { date.getSeconds() }
     <small>
-      {{ ( '00' + date.getMilliseconds() ).slice(-3) }}
+      { ('00'+date.getMilliseconds()).slice(-3) }
     </small>
   </div>
 

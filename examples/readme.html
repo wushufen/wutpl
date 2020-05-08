@@ -2,21 +2,27 @@
 <html>
 
 <head>
-  <title>hello world</title>
+  <!-- 1: 引入wutpl，支持 es6 requireJS seaJS -->
   <script src="../wutpl.js"></script>
 </head>
 
 <body>
+
+  <!-- 2: 编写模板 -->
   <div id="tpl">
-    <div>defalut: {html}</div>
-    <div>#html: {#html}</div>
+    {for list item}
+    <span>{item}</span>
+    {/for}
   </div>
+
+  <!-- 3: 编译与渲染 -->
   <script>
     var render = wutpl(tpl)
     render({
-      html: '<button onclick="alert(/xss/)"> X S S </button>'
+      list: [1, 2, 3]
     })
   </script>
+
 </body>
 
 </html>

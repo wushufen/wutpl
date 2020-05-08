@@ -34,7 +34,7 @@
 
   function getVars(tpl) {
     var code = tpl.match(tag('.*')).join()
-      .replace(/\b(for|each|if|else|\..+?)\b/g, '')
+      .replace(/\b(for|if|else|typeof|instanceof|new|in|null|true|false|\..+?)\b/g, '')
 
     var m = code.match(/[_$a-z][_$a-z0-9]*/ig) || []
 
@@ -62,10 +62,10 @@
       }
     }
     var code = tpl
-      .replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-      .replace(tag('(?:each|for)( .+?)( .+?)( .+?)( .+?)'), '\f;this.each($1, function($2, $3, $4){\f')
-      .replace(tag('(?:each|for)( .+?)( .+?)( .+?)?'), '\f;this.each($1, function($2, $3){\f')
-      .replace(tag('/(?:each|for)'), '\f})\f')
+      .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&')
+      .replace(tag('for (\\S+?) (\\S+?)(?: (\\S+?))?'), '\f;this.each($1, function($2, $3){\f')
+      .replace(tag('for (\\S+?) (\\S+?) (\\S+?) (\\S+?)'), '\f;this.each($1, function($2, $3, $4){\f')
+      .replace(tag('/for'), '\f})\f')
       .replace(tag('if (.+?)'), '\f;if($1){\f')
       .replace(tag('else ?if (.+?)'), '\f}else if($1){\f')
       .replace(tag('else'), '\f}else{\f')
@@ -100,8 +100,8 @@
     return data ? render(data) : render
   }
 
-  wutpl.leftTag = '<!-- {{|{{'
-  wutpl.rightTag = '}} -->|}}'
+  wutpl.leftTag = '<!-- {|{'
+  wutpl.rightTag = '} -->|}'
 
   if (typeof module == 'object') module.exports = wutpl
   else if (typeof global == 'object') global.wutpl = wutpl

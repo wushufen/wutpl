@@ -23,15 +23,15 @@
 <body>
 
   <ul id="tpl">
-    {{each list item i}}
-    <li class="animated zoomInRight" style="animation-delay: {{i*0.15}}s">
-      第 {{ i+1 }} 条记录
+    {for list item i}
+    <li class="animated zoomInRight" style="animation-delay:{i*0.15}s">
+      第 { i+1 } 条记录
     </li>
-    {{/each}}
+    {/for}
     <!-- empty -->
-    {{if !list.length}}
+    {if !list.length}
     <li class="animated wobble">暂无记录</li>
-    {{/if}}
+    {/if}
   </ul>
 
   <script>

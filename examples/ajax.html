@@ -9,11 +9,11 @@
 <body>
 
   <ul id="tpl">
-    {{each list item index}}
+    {for list item}
     <li>
-      {{index}}: {{item.name}}
+      {index}: {item.name}
     </li>
-    {{/each}}
+    {/for}
   </ul>
 
   <script>
