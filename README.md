@@ -80,7 +80,7 @@ var html = wutpl(tpl, data)
 
  {if bool} yes {else} no {/if}
 
- {value}
+ {text}
 
  {#html}
 ```
