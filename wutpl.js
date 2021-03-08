@@ -1,11 +1,11 @@
 /*!
- * @preserve https://github.com/wusfen/wutpl.js
+ * @preserve https://github.com/wusfen/wutpl
  */
 
-(function () {
+(function() {
   var _this = {
     global: Function('return this')(),
-    each: function (list, fn) {
+    each: function(list, fn) {
       if (list instanceof Array) {
         for (var i = 0; i < list.length; i++) {
           var item = list[i]
@@ -21,7 +21,7 @@
         }
       }
     },
-    escape: function (value) {
+    escape: function(value) {
       return String(value).replace(/</g, '&lt;').replace(/>/g, '&gt;')
     }
   }
@@ -33,7 +33,7 @@
   }
 
   function getVars(tpl) {
-    var code = tpl.match(tag('.*')).join()
+    var code = (tpl.match(tag('.*')) || []).join()
       .replace(/\b(for|if|else|typeof|instanceof|new|in|null|true|false|\..+?)\b/g, '')
 
     var m = code.match(/[_$a-z][_$a-z0-9]*/ig) || []
@@ -74,7 +74,7 @@
       .replace(tag('([^\f]+?)'), '\f;_html_+= this.escape($1)\f')
       .replace(/ wutpl-src=/g, ' src=')
       // .replace(/(^|\f)([\s\S]*?)(\f|$)/g, ';_html_+= `$2`')
-      .replace(/(^|\f)([\s\S]*?)(\f|$)/g, function ($and, $1, $2, $3) {
+      .replace(/(^|\f)([\s\S]*?)(\f|$)/g, function($and, $1, $2, $3) {
         return '\n;_html_+= "' + $2
           .replace(/\\/g, '\\\\')
           .replace(/"/g, '\\"')
@@ -87,7 +87,7 @@
     // console.log(code)
 
     var fn = Function('_data_', code)
-    var render = function (data) {
+    var render = function(data) {
       data = data || {}
       var html = fn.call(_this, data)
       if (node) {
@@ -106,6 +106,6 @@
   if (typeof module == 'object') module.exports = wutpl
   else if (typeof global == 'object') global.wutpl = wutpl
   else if (typeof define == 'function' && (define.amd || define.cmd))
-    define(function (require, exports, module) { module.exports = wutpl })
+    define(function(require, exports, module) { module.exports = wutpl })
   else if (typeof window == 'object') window.wutpl = wutpl
 })()
