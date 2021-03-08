@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="./2.js"></script>
+</head>
+<body>
+
+	<div id="app">
+		
+		<ul>
+			<li for="item in list" if="item>5" :class="{even:item%2==0}" @click="check(item)">
+				{{item}}
+			</li>
+		</ul>
+
+	</div>
+
+	<script>
+		
+		var vm = new View({
+			el: app,
+			data: {
+				list:[]
+			},
+			methods: {
+
+			}
+		})
+
+	</script>
+
+
+
+	<script>
+		function View(options) {
+			
+		}
+
+		
+
+		function complie(node) {
+			// body...
+		}
+	</script>
+
+</body>
+</html>
