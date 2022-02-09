@@ -10,8 +10,8 @@
 * 有的模板引擎使用变量需要加前缀，比如 `this.value`, `data.value`, `it.value`
 
 ## 性能测试
-[点这测试](https://wusfen.github.io/wutpl/test/template_test.html?v=20190304.1644)  
-![性能测试](https://wusfen.github.io/wutpl/test/test.20190308.1422.png)  
+[点这测试](https://wushufen.github.io/wutpl/test/template_test.html?v=20190304.1644)  
+![性能测试](https://wushufen.github.io/wutpl/test/test.20190308.1422.png)  
 
 
 ## 使用方法
@@ -120,9 +120,9 @@ var html = wutpl(tpl, data)
 
 ## 实例
 
-* [hello world](https://wusfen.github.io/wutpl/examples/helloWorld.html) | [源码](examples/helloWorld.html)
-* [list](https://wusfen.github.io/wutpl/examples/list.html) | [源码](examples/list.html)
-* [ajax](https://wusfen.github.io/wutpl/examples/ajax.html) | [源码](examples/ajax.html)
-* [xss](https://wusfen.github.io/wutpl/examples/xss.html) | [源码](examples/xss.html)
-* [时钟](https://wusfen.github.io/wutpl/examples/time.html) | [源码](examples/time.html)
-* [动画](https://wusfen.github.io/wutpl/examples/animate.html) | [源码](examples/animate.html)
+* [hello world](https://wushufen.github.io/wutpl/examples/helloWorld.html) | [源码](examples/helloWorld.html)
+* [list](https://wushufen.github.io/wutpl/examples/list.html) | [源码](examples/list.html)
+* [ajax](https://wushufen.github.io/wutpl/examples/ajax.html) | [源码](examples/ajax.html)
+* [xss](https://wushufen.github.io/wutpl/examples/xss.html) | [源码](examples/xss.html)
+* [时钟](https://wushufen.github.io/wutpl/examples/time.html) | [源码](examples/time.html)
+* [动画](https://wushufen.github.io/wutpl/examples/animate.html) | [源码](examples/animate.html)
